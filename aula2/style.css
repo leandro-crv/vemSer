@@ -1,0 +1,51 @@
+body, html{
+    margin: 0;
+    padding:0;
+}
+
+h1{
+    color:aquamarine;
+    background-color: bisque;
+    font-size: 50px;
+    text-decoration: underline;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+p{
+    color:black;
+    text-align: justify;
+    line-height: 50px;
+}
+
+ul{
+    /* border-width: 4px;
+    border-style: solid;
+    border-color: brown; */
+    border-bottom: 4px solid red;
+    border-left: 8px solid blue;
+    border-top: 4px solid red;
+    border-right: 8px solid blue;
+}
+
+li{
+    text-shadow: 2px 2px lightgray;
+    list-style-type: none;
+}
+
+.class1{
+    background-color: aqua;
+    width:300px;
+}
+
+.class2{
+    /* background-color: beige; */
+    width:300px;
+}
+#id1{
+    background-color: violet;
+}
+
+.paragrafo1{
+    background-color: brown;
+}

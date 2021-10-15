@@ -1,0 +1,25 @@
+p:nth-child(2){
+    background-color: red;
+}
+
+nav ul li::before{
+    content: '';
+    display: block;
+    background-image: url(./mario.png);
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+}
+
+.pesquisar{
+    background-color: brown;
+}
+
+.pesquisar::after{
+    content: '';
+    display: block;
+    background-image: url(./mario.png);
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+}
