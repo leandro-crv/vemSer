@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+body, html,*{
+    margin: 0;
+    padding:0;
+    font-family: 'Open Sans', sans-serif;
+    
+}
+
+body{
+    background-color: #EFF3F8;
+    
+}
+
+.container{
+    max-width: 1200px;
+    margin:auto;
+}
+
+main{
+    background-color: #EFF3F8;
+}
+
+header,footer{
+    background-color: #1A75C1;
+}
+
+.logo{
+    color:white;
+    margin:auto;
+    text-align: center;
+
+} 
+
+
+
+nav ul{
+    display: flex;
+    justify-content:space-around;
+    margin:16px;
+   
+}
+
+nav ul li {
+    display: inline;
+    list-style-type: none;
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+a{
+    color: #EFF3F8;
+    padding: 8px;
+    text-decoration: none;
+}
+
+a:hover{
+    font-weight: bold;
+    color: #1A75C1;
+    background-color: white;
+    border-radius: 8px;
+}
+
+img{
+    border-radius: 100px;
+}
+
+main h1{
+    text-align: center;
+    color: #1A75C1;
+}
+
+.lista-cogumelos{
+    margin: 16px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+.cogumelo{
+    width:30%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid thin #1A75C1;
+    text-align: center;
+    padding:16px;
+}
+
+.cogumelo img{
+    display: block;
+    max-width: 200px;
+}
+
+
+
+.cogumelo:hover{
+    border: solid thick #1A75C1;
+}
+
+main p{
+    margin-top: 16px;
+    text-align: justify;
+}
+
+.mapa{
+    text-align: center;
+    margin: 16px;
+    
+}
+
+address{
+    color:white;
+    text-align: center;
+    margin-top: 8px;
+}
+
+iframe{
+    display: block;
+    margin:16px auto;
+    /* text-align: center; */
+    
+}
+
+form{
+   
+    margin:16px auto;
+    text-align: center;
+}
+
+form input,select{
+    width: 50%;
+    height: 2.5rem;
+    border-radius: 20px;
+    padding:8px;
+   
+}
+
+/* .rodape{
+    position:absolute;
+    width:100%;
+    bottom:0;
+} */
+
+.enviar{
+    background-color: #1A75C1;
+    color: #EFF3F8;
+    
+}
+
+.enviar:hover{
+    font-weight: bolder;
+}

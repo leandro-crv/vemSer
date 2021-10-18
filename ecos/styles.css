@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+body,html,*{
+    margin: 0;
+    padding: 0;
+}
+
+/*--HEADER --*/
+
+header{
+    background-color: #1A75C1;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: left;
+    align-items: center;
+}
+
+header img[alt="filtrar"]{
+  
+  
+  
+
+}
+
+header .inputs{
+   margin-left: 80px;
+   
+}
+
+
+
+header input[type="text"]{
+    width: 500px;
+    padding: 4 0 4 8;
+    border-radius: 20px;
+}
+
+
+
+header input[type="date"]{
+    width:200px;
+    border-radius: 20px;
+    padding: 4px 8px;
+}
+
+.menu-hamburguer{
+    margin-left: auto;
+}
+
+/*--FLEX DA PÁGINA --*/
+.container{
+    /* max-width: 1200px; */
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+/*--NOTÍCIAS--*/
+main h1{
+    color:#1A75C1;
+    font-family: Poppins;
+    text-align: center;
+    margin:20px;
+}
+
+main{
+    width:70%;
+    display: block;
+    background-color: #E5E5E5;
+}
+
+main .row{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+}
+
+
+.card{
+    display: block;
+    max-width: 250px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    margin-top: 8px;
+}
+
+
+.card img{
+    display: block;
+    width:100%;
+}
+
+.card h3{
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+     font-weight: normal;
+     padding:8px;
+}
+
+main small{
+    display: flex;
+    font-family: 'Open Sans', sans-serif;
+    color: #1A75C1
+}
+
+.row small{
+    display: block;
+    width: 100%;
+    margin: 20px 16px
+}
+
+.carregar-mais{
+    display: block;
+    margin: 0 auto;
+
+}
+
+/*--ANIVERSÁRIOS --*/
+.lateral{
+    width: 30%;
+    display: block;
+    padding: 40px 8px 16px 8px;
+    
+}
+
+hr{
+    color: #004E8F;
+    border-top: 2px #004E8F solid;
+}
+
+.birthday h2, .birthday h3, aside h4{
+    font-family: Poppins;
+    font-style: normal;
+    color:#004E8F;
+}
+
+.birthday h2{
+    margin-bottom: 8px;
+}
+
+.birthday small{
+    color:#004E8F;
+    font-family:'Open Sans', sans-serif;
+}
+
+.birthday-line{
+    display: flex;
+    flex-wrap:wrap;
+    margin-top:16px;
+    align-items: center;
+    
+}
+
+.birthday-line div{
+    margin-left: 8px;
+      
+}
+
+.birthday-line input[type="text"]{
+    margin: 8px 2px 8px 2px;
+    border-radius:10px;
+    width: 100%;
+    padding: 2px;
+}
+
+.birthday-line input[type="submit"]{
+    background-color:  #1A75C1;
+    border-radius: 10px;
+    color:white;
+    padding: 4px 12px;
+    float:right;
+    
+}
+
+.proximos-aniversarios, .carregar-mais{
+    display: block;
+    background-color: #1A75C1;
+    color: white;
+    border: solid thin #1A75C1;
+    padding: 4px 12px;
+    margin: 0 auto;
+    
+}
+
+
+.events h3{
+    font-family: Poppins;
+    font-style: normal;
+    color:#004E8F;
+    margin-bottom: 8px;
+}
+
+.events img{
+    display: block;
+    width: 100%;
+}
+
+/*--FOOTER --*/
+footer nav ul{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding: 20px;
+}
+
+footer li{
+    list-style-type: none;
+    
+}
+
+footer a{
+    text-decoration: none;
+}
