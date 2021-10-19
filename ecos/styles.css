@@ -15,12 +15,12 @@ header{
     align-items: center;
 }
 
-header img[alt="filtrar"]{
+/* header img[alt="filtrar"]{
   
   
   
 
-}
+} */
 
 header .inputs{
    margin-left: 80px;
