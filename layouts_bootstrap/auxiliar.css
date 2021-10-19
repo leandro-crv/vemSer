@@ -1,0 +1,30 @@
+header{
+    background-color: black;
+    margin-bottom: 24px;
+}
+header a:hover{
+    text-decoration: underline;
+}
+
+/*--TELA 2 --*/
+
+.tela2 main img{
+    display: block;
+    width: 100%;
+}
+
+/*--TELA 3 --*/
+
+.tela3 img{
+    display: block;
+    width: 100%;
+}
+
+.tela3 .titulo{
+    min-height: 60px;
+       
+}
+
+.tela3 h2{
+    font-size: 24px;
+}
