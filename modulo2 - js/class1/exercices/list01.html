@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="list01.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Exercices - list 01</h1>
+        <div class="exercicio">
+
+            <div class="enunciado">
+                1) Crie um programa que, a partir de um texto que o usuário digitar (prompt), verifique:
+                - Se o texto for igual à 'SIM' informe um alerta para o usuário informando o texto "Parabéns";
+                - Se o texto for igual à 'Não' solicite novamente para o usuário informar algum texto e após isso mostre
+                para ele o texto digitado em um alerta;
+                - Se for digitado qualquer outra string solicite uma confirmação para o usuário com o texto: 'Você tem
+                noções dos seus atos?'
+            </div>
+            <div class="resposta">
+                var resposta = prompt('Digite um texto');<br><br>
+
+                if(resposta==='SIM'){<br>
+                alert("Parabéns");<br>
+                }<br>
+                else if(resposta==="Não"){<br>
+                var novoTexto = prompt('Informe um texto')<br>
+                alert(novoTexto)<br>
+                }<br>
+                else{<br>
+                confirm('Você tem noção dos seus atos?')<br>
+                }
+            </div>
+            <button onclick='exe1()'> Executar</button>
+        </div>
+        <div class="exercicio">
+
+            <div class="enunciado">
+                2) Crie um programa que solicita para o usuário dois valores de texto, nome do cliente e nome do
+                atendente;
+                Exiba um alerta para o usuário com a mensagem "Olá cliente eu me chamo atendente, em que posso ajudar?"
+                (String interpolation)
+            </div>
+            <div class="resposta">
+                var cliente = prompt("Digite o nome do cliente");<br>
+                var atendente = prompt ("Digite o nome do atendente");<br>
+                alert(`Olá ${cliente} eu me chamo ${atendente}, em que posso ajudar?`)
+
+            </div>
+            <button onclick='exe2()'> Executar</button>
+        </div>
+        <div class="exercicio">
+
+            <div class="enunciado">
+                3) Crie um programa que possui 3 variáveis do tipo Boolean (true / false);
+                nomes das variáveis: isFriday, isTwoGreaterThanFour e isValueEmpty;
+                Atribua à primeira variável isFriday o resultado de uma pergunta feita para o usuário "Hoje é
+                sexta-feira?";
+                Atribua à primeira variável isTwoGreaterThanFour o resultado da comparação de "2 maior que 4" (Se
+                necessário, pesquisar como comparar maior e menor);
+
+                Para a variável isValueEmpty você precisa solicitar uma informação para o usuário e deve ter certeza que
+                essa informação não é nenhum dos valores a seguir:
+                null, undefined ou um texto vazio ('')
+            </div>
+            <div class="resposta">
+                var isFriday = prompt("Hoje é sexta-feira?")==='sim'; <br>
+                var isTwoGreaterThanFour = 2 > 4; <br>
+                var info = prompt("Digite uma informação"); <br>
+                var isEmpty = info!==null && info!==undefined && info.length===0; <br>
+            </div>
+            <button onclick='exe3()'> Executar</button>
+        </div>
+        <div class="exercicio">
+
+            <div class="enunciado">
+                4) Crie um programa que recebe dois números e uma operação desejada (operações válidas: '+', '-', '*',
+                '/') e adicione também uma validação para caso a operação
+                escolhida não seja uma das operações válidas OU se um dos números digitados seja um valor inválido
+                também;
+                Caso a validação encontre um erro mostre um alerta informando o usuário;
+                Obs: Lembrando também que não é possível dividir por zero (ou seja, tratem isso também);
+            </div>
+            <div class="resposta">
+                var n1 = Number.parseInt(prompt('Digite o primeiro número')); <br>
+                var operando = prompt("Insira o operando"); <br>
+                var n2 = Number.parseInt(prompt('Digite o segundo número')); <br>
+                if(!isNaN(n1) && !isNaN(n2) && (n1 && n2)!==undefined && (n1 && n2)!==null && (operando ==='+' ||
+                operando ==='-' || operando ==='*' || operando==='/')){ <br>
+                if(n2===0 && operando==='/'){ <br>
+                alert('Erro: não é possível dividir um número por zero');<br>
+                } <br>
+                } <br>
+                else{ <br>
+                alert('Há um erro nas informações'); <br>
+                }
+            </div>
+            <button onclick='exe4()'> Executar</button>
+        </div>
+
+        <div class="exercicio">
+
+            <div class="enunciado">
+                5) Crie um programa que recebe 3 notas (T1, T2 e P1) como números reais (float, ex: 5.2), realize a
+                média dessas notas e realize a seguinte verificação:
+                (menor que 5 = alerta de reprovado, de 5 até 7 = alerta de recuperação e acima de 7 = alerta de
+                parabenização)
+                Obs: adicione as validações para ter certeza que os números inseridos estão certos;
+            </div>
+            <div class="resposta">
+                var t1 = Number.parseFloat(prompt('Digite a nota t1'));<br>
+                var t2 = Number.parseFloat(prompt('Digite a nota t2'));<br>
+                var p1 = Number.parseFloat(prompt('Digite a nota p1'));<br>
+
+                if(!isNaN(t1) && !isNaN(t2) && !isNaN(p1)){ <br>
+                var media = (t1 + t2 + p1)/3; <br>
+                if(media < 5){ <br>
+                    alert('Reprovado'); <br>
+                    } <br>
+                    else if(media > 5 && media < 7){ <br>
+                        alert('Recuperação') <br>
+                        } <br>
+                        else{ <br>
+                        alert('Parabéns, aprovado!') <br>
+                        } <br>
+                        } <br>
+                        else{ <br>
+                        alert('Você inseriu uma nota inválida'); <br>
+                        }
+            </div>
+            <button onclick='exe5()'> Executar</button>
+        </div>
+        
+        <h2>Exercícios complementares </h2>
+        <div class='exercicio'>
+            <div class="enunciado">
+                Crie um programa que imprima no console os números de 1 a 10
+            </div>
+            <div class="resposta">
+                for(i=1; i<=10; i++){<br>
+                    console.log(i);<br>
+                }
+            </div>
+            <button onclick='exe6()'> Executar </button>
+        </div>
+        <div class='exercicio'>
+            <div class="enunciado">
+                Crie um programa que, através de laços de repetição, percorra uma determinada lista com os seguintes números: [1,2,7,10,18] e imprima no console a soma de todos os elementos, neste caso seria 38.
+            </div>
+            <div class="resposta">
+                var array = [1,2,7,10,18]; <br>
+                var soma = 0; <br>
+                for(i=0; i< array.length; i++){ <br>
+                    soma+= array[i] <br>
+                } <br>
+                console.log(`soma dos números do array é: ${soma}`)
+            </div>
+            <button onclick='exe7()'> Executar </button>
+        </div>
+        <div class='exercicio'>
+            <div class="enunciado">
+                Crie um programa que mostre um prompt para o usuário pedindo para selecionar uma das opções: 1 - Continuar perguntando / 2 - Parar de perguntar. Se ele digitar algo diferente de 1 ou de 2 deve mostrar um alerta para ele informando o erro e deve solicitar novamente que ele escolha uma opção.
+            </div>
+            <div class="resposta">
+                chamarPrompt()<br><br>
+                function chamarPrompt(){<br>
+                var resposta = prompt('Escolha a alternativa: 1 - continuar perguntando; 2- Parar de perguntar')<br>
+                if(resposta==='2'){<br>
+                    return<br>
+                }<br>
+                else if(resposta==='1'){<br>
+                chamarPrompt()<br>
+                }<br>
+                else{<br>
+                alert('Opção inválida')<br>
+                chamarPrompt()<br>
+                }<br>
+                }
+            </div>
+            <button onclick='exe8()'> Executar </button>
+        </div>
+        <div class='exercicio'>
+            <div class="enunciado">
+                Crie um programa que atribua à uma variável e imprima no console ao final da execução os textos: 'Sextou' ou "Ainda não sextou" de acordo com a resposta do usuário, códigos 1 e 2 respectivamente.
+            </div>
+            <div class="resposta">
+                var pergunta = prompt('Escolha a alternativa: 1 - Sextou; 2 - Ainda não sextou');<br>
+                if(pergunta!=='1' && pergunta!=='2'){ <br>
+                    alert('Alternativa inválida') <br>
+                } <br>
+                else if(pergunta==='1'){ <br>
+                    console.log('Sextou') <br>
+                } <br>
+                else{ <br>
+                    console.log('Ainda não sextou') <br>
+                }
+            </div>
+            <button onclick='exe9()'> Executar </button>
+        </div>
+        
+    </div>
+    </div>
+        <script src="list01.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+1) Crie um programa que, a partir de um texto que o usuário digitar (prompt), verifique:
+   - Se o texto for igual à 'SIM' informe um alerta para o usuário informando o texto "Parabéns";
+   - Se o texto for igual à 'Não' solicite novamente para o usuário informar algum texto e após isso mostre para ele o texto digitado em um alerta;
+   - Se for digitado qualquer outra string solicite uma confirmação para o usuário com o texto: 'Você tem noções dos seus atos?'
+
+
+2) Crie um programa que solicita para o usuário dois valores de texto, nome do cliente e nome do atendente;
+   Exiba um alerta para o usuário com a mensagem "Olá cliente eu me chamo atendente, em que posso ajudar?" (String interpolation)
+
+
+3) Crie um programa que possui 3 variáveis do tipo Boolean (true / false);
+   nomes das variáveis: isFriday, isTwoGreaterThanFour e isValueEmpty;
+   Atribua à primeira variável isFriday o resultado de uma pergunta feita para o usuário "Hoje é sexta-feira?";
+   Atribua à primeira variável isTwoGreaterThanFour o resultado da comparação de "2 maior que 4" (Se necessário, pesquisar como comparar maior e menor);
+   
+   Para a variável isValueEmpty você precisa solicitar uma informação para o usuário e deve ter certeza que essa informação não é nenhum dos valores a seguir:
+   null, undefined ou um texto vazio ('')
+
+
+4) Crie um programa que recebe dois números e uma operação desejada (operações válidas: '+', '-', '*', '/') e adicione também uma validação para caso a operação
+   escolhida não seja uma das operações válidas OU se um dos números digitados seja um valor inválido também;
+   Caso a validação encontre um erro mostre um alerta informando o usuário;
+   Obs: Lembrando também que não é possível dividir por zero (ou seja, tratem isso também);
+
+
+5) Crie um programa que recebe 3 notas (T1, T2 e P1) como números reais (float, ex: 5.2), realize a média dessas notas e realize a seguinte verificação:
+   (menor que 5 = alerta de reprovado, de 5 até 7 = alerta de recuperação e acima de 7 = alerta de parabenização)
+   Obs: adicione as validações para ter certeza que os números inseridos estão certos;
