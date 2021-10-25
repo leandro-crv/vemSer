@@ -69,10 +69,10 @@
                 null, undefined ou um texto vazio ('')
             </div>
             <div class="resposta">
-                var isFriday = prompt("Hoje é sexta-feira?")==='sim'; <br>
+                var isFriday = confirm("Hoje é sexta-feira?"); <br>
                 var isTwoGreaterThanFour = 2 > 4; <br>
                 var info = prompt("Digite uma informação"); <br>
-                var isEmpty = info!==null && info!==undefined && info.length===0; <br>
+                var isEmpty = info===null || info===undefined || info.length===0; <br>
             </div>
             <button onclick='exe3()'> Executar</button>
         </div>
@@ -122,7 +122,7 @@
                 if(media < 5){ <br>
                     alert('Reprovado'); <br>
                     } <br>
-                    else if(media > 5 && media < 7){ <br>
+                    else if(media >= 5 && media < 7){ <br>
                         alert('Recuperação') <br>
                         } <br>
                         else{ <br>

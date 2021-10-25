@@ -21,13 +21,13 @@ function exe2(){
 }
 
 function exe3(){
-    var isFriday = prompt("Hoje é sexta-feira?")==='sim';
+    var isFriday = confirm('Hoje é sexta-feira?');
     console.log('isFriday ', isFriday)
     var isTwoGreaterThanFour = 2 > 4;
     console.log('isTwoGreaterThanFour ' , isTwoGreaterThanFour)
     
     var info = prompt("Digite uma informação");
-    var isEmpty = info!==null && info!==undefined && info.length === 0;
+    var isEmpty = info===null || info===undefined || info.length === 0;
     console.log('isEpty ',isEmpty) 
 
 }
@@ -61,7 +61,7 @@ function exe5(){
         if(media<5){
             alert('Reprovado');
         }
-        else if(media > 5 && media < 7){
+        else if(media >= 5 && media < 7){
             alert('Recuperação')
         }
         else{
