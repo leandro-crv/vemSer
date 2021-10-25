@@ -76,6 +76,6 @@ var numerosInseridos = 0;
 do{
     somatorio+= Number.parseInt(prompt("Digite um número"),10)
     numerosInseridos++
-}while(numerosInseridos <=5)
+}while(numerosInseridos <5)
 
 console.log('somatório é ', somatorio)
