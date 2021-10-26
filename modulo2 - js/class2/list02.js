@@ -50,11 +50,15 @@ for(let i=2; i<= quantidadeDePares*2; i+=2){
 console.log(`soma dos primeiros ${quantidadeDePares} números pares é: ${soma}`);
 
 //3) Faça um programa onde o usuário possa escolher qual a tabuada que se deseja ver. Exiba (console) a tabuada desse número de 1 a 10;
+do{
+    var tabuada = Number.parseInt(prompt('Qual tabuada você gostaria de ver? - apenas algarismos'),10);
 
-var tabuada = Number.parseInt(prompt('Qual tabuada você gostaria de ver? '),10);
+}while(isNaN(tabuada) || tabuada===undefined)
+
 for(let i= 1; i<=10;i++){
-    console.log(`${i} * ${tabuada} = ${i*tabuada}`)
+        console.log(`${i} * ${tabuada} = ${i*tabuada}`)
 }
+
 
  // 4) Faça um algoritmo que apresente o quadrado de cada um dos números pares entre 1 e 100;
 
@@ -74,8 +78,15 @@ var somatorio = 0;
 var numerosInseridos = 0;
 
 do{
-    somatorio+= Number.parseInt(prompt("Digite um número"),10)
-    numerosInseridos++
+    var numeroDigitado = Number.parseInt(prompt("Digite um número"),10)
+    if(isNaN(numeroDigitado) || numeroDigitado===undefined){
+        alert('Digite um número válido')
+    }
+    else{
+        somatorio+= numeroDigitado;
+        numerosInseridos++;
+    }
+
 }while(numerosInseridos <5)
 
 console.log('somatório é ', somatorio)
