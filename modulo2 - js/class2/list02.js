@@ -80,7 +80,7 @@ var numerosInseridos = 0;
 do{
     var numeroDigitado = Number.parseInt(prompt("Digite um número"),10)
     if(isNaN(numeroDigitado) || numeroDigitado===undefined){
-        alert('Digite um número válido')
+        alert('Digite um número válido');
     }
     else{
         somatorio+= numeroDigitado;
