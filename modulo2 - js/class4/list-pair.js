@@ -62,12 +62,12 @@ segundoMenorESegundoMaior([1,2,'teste',4]);
    // neste caso retorna: 'Hoje Faremos O Trabalho Em Dupla, Que Legal - Sqn';
 
    function colocaPrimeiraLetraEmMaiusculo(frase){
-       if(typeof frase !=='string'){
+       if(typeof frase !=='string' || !frase.length){
            return "O parâmetro deve ser uma string!";
        }
 
        // transforma a string frase em um array, separado por palavra;
-       var arrayFrase = frase.split(' ');
+       var arrayFrase = frase.trim().split(' ');
 
        for(let i=0; i< arrayFrase.length;i++){
            
@@ -78,3 +78,6 @@ segundoMenorESegundoMaior([1,2,'teste',4]);
     }
 
     colocaPrimeiraLetraEmMaiusculo('nossa dupla é demais');
+    colocaPrimeiraLetraEmMaiusculo();
+    colocaPrimeiraLetraEmMaiusculo('');
+    colocaPrimeiraLetraEmMaiusculo(44);
