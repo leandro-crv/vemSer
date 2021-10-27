@@ -81,3 +81,64 @@ segundoMenorESegundoMaior([1,2,'teste',4]);
     colocaPrimeiraLetraEmMaiusculo();
     colocaPrimeiraLetraEmMaiusculo('');
     colocaPrimeiraLetraEmMaiusculo(44);
+
+/* ---- EXERCÍCIOS EXTRAS --- */
+
+    // 1) Crie uma função que receba uma string e retorne a maior palavra dentro da string 
+   // exemplo: minhaFuncao( 'Eu adoro Javscript' ) => retorna 'Javascript'
+
+   function minhaFuncao(frase) {
+    var maximo = 0
+    var posicao = 0
+    var arrayPalavras = frase.trim().split(' ');
+    console.log(arrayPalavras)
+
+    for(i = 0; i < arrayPalavras.length; i++) {
+        if (arrayPalavras[i].length > maximo) {
+            maximo = arrayPalavras[i].length;
+            posicao = i;
+            console.log(`iteração ${i} \n palavra ${arrayPalavras[i]} máximo: ${maximo} \n posição no array ${posicao} - ALTEROU MÁXIMO`)
+        }
+        console.log(`iteração ${i} \n palavra ${arrayPalavras[i]} \n - NÃO alterou máximo`)
+    }
+    return arrayPalavras[posicao]
+}
+minhaFuncao('Eu adoro Javascript')
+
+
+// 2) Crie uma função que receba uma string e retorna a quantidade de vogais na string;
+
+function minhaFuncao(frase) {
+    var arrayPalavras = frase.trim().split(' ');
+    console.log(arrayPalavras)
+    var maximo = 0
+    var posicao = 0
+
+    for(i = 0; i < arrayPalavras.length; i++) {
+        if (arrayPalavras[i].length > maximo) {
+            maximo = arrayPalavras[i].length;
+            posicao = i;
+            console.log(`iteração ${i} \n palavra ${arrayPalavras[i]} máximo: ${maximo} \n posição no array ${posicao} - ALTEROU MÁXIMO`)
+        }
+        console.log(`iteração ${i} \n palavra ${arrayPalavras[i]} \n - NÃO alterou máximo`)
+    }
+    return arrayPalavras[posicao]
+}
+minhaFuncao('Eu adoro Javascript')
+
+
+
+function funcaoVogal(string) {
+    var arrayVogais = string.trim().split('');
+    console.log(arrayVogais)
+    var numero = 0
+
+    for(i=0; i < arrayVogais.length; i++) {
+        let letra = arrayVogais[i]
+        if (letra === 'a' || letra === 'e' || letra === 'i' || letra === 'o' || letra === 'u') {
+            numero += 1
+        }
+    }
+    return numero
+}
+funcaoVogal('aaaaaaaabcdef')
