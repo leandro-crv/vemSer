@@ -17,15 +17,7 @@ function funcaoRemoveCaracterDoTexto(caracter, array) {
         // verifica se a posição do array possui mais de um caractere. Se sim, faz um laço para verificar cada um.
         if (array[i].length > 1) {
             // Transforma string em array para poder trabalhar com split
-            let stringToArray = array[i].split('');
-            for (let j = 0; j < stringToArray.length; j++) {
-                if (stringToArray[j] === caracter) {
-                    console.log('entrei no for interno')
-                    stringToArray.splice(j,1)
-                }
-            }
-            // Retorna o array criado para string e caso tenha sobrado algum caractere, é retomado para a posição original do array.
-            stringToArray.length ? array[i] = stringToArray.join('').toString() : array.splice(i,1);
+            array[i] = array[i].replace(caracter,'')
         }
         else if (array[i] === caracter) {
             array.splice(i,1)
@@ -62,7 +54,7 @@ funcaoRemoveCaracterDoTexto('e','teste')
 
 //3) Crie uma função que recebe como parâmetro 2 arrays (quaisquer que sejam) e retorne uma concatenação destes 2 arrays ("soma");
 function concatenarArrays(array1,array2){
-    if(typeof array1==='object' && typeof array2==='object' && array1.length && array2.length){
+    if(typeof array1==='object' && typeof array2==='object'){
         return array1.concat(array2);
     }
     else{
@@ -81,19 +73,19 @@ function adicionarElemento(elemento){
         listaVazia.push(elemento);
     }
     else{
-        return 'elemento inválido'
+        return 'elemento inválido';
     }
 }
 
-adicionarElemento('primeiro elemento da lista')
-adicionarElemento('segundo elemento da lista')
-adicionarElemento('terceiro elemento da lista')
-adicionarElemento()
+adicionarElemento('primeiro elemento da lista');
+adicionarElemento('segundo elemento da lista');
+adicionarElemento('terceiro elemento da lista');
+adicionarElemento();
 
 // 4b) Crie outra função para remover o último elemento da lista;
 
 function removerUltimoElemento(lista){
-    if(typeof lista ==='object' && lista.length){
+    if(typeof lista ==='object'){
         lista.pop();
     }
     else{
@@ -101,7 +93,7 @@ function removerUltimoElemento(lista){
     }
 }
 
-removerUltimoElemento([1,2,3])
-removerUltimoElemento('teste')
-removerUltimoElemento()
-removerUltimoElemento([])
+removerUltimoElemento([1,2,3]);
+removerUltimoElemento('teste');
+removerUltimoElemento();
+removerUltimoElemento([]);
