@@ -1,0 +1,22 @@
+{
+  "name": "vemser",
+  "version": "1.0.0",
+  "description": "1. página ecos conforme figma --> pasta ecos\r 2. Página dos cogumelos com home, sobre e contato --> pasta home-about-contact\r 3. Layouts figma (4 telas) --> pasta layouts\r 4. Layouts figma (4 telas) utilizando bootstrap --> pasta layouts_bootstrap",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandro-crv/vemSer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leandro-crv/vemSer/issues"
+  },
+  "homepage": "https://github.com/leandro-crv/vemSer#readme",
+  "devDependencies": {
+    "eslint": "^8.1.0"
+  }
+}
