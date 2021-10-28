@@ -6,3 +6,6 @@
 2. Página dos cogumelos com home, sobre e contato --> pasta home-about-contact
 3. Layouts figma (4 telas) --> pasta layouts
 4. Layouts figma (4 telas) utilizando bootstrap --> pasta layouts_bootstrap
+
+## Js 
+1. Exercícios em dupla --> pasta class4
