@@ -1,0 +1,2 @@
+// 1) Crie uma função que receba uma string e retorna a quantidade de vogais e a quantidade de consoantes na string 
+//    da seguinte forma: 'A string [stringInformada] tem X vogas e X consoantes';
