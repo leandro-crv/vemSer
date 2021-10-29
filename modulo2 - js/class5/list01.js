@@ -39,8 +39,10 @@
 var listaDeProdutos = [];
 const MENSAGEM_ERRO_PRODUTO = "Este produto não pode ser cadastrado pois não cumpre os requisitos do sistema.";
 const MENSAGEM_ID_EXISTENTE = "Este produto não pode ser cadastrado pois seu id já pertence a outro produto.";
+const MENSAGEM_ERRO_EXCLUIR = "Não foi possível excluir o produto. Informe um código (id) válido.";
+const MENSAGEM_ERRO_ENCONTRAR = "Não foi possível encontrar o produto. Informe um código (id) válido.";
 
-function validaProduto(produto) {
+function produtoEhValido(produto) {
     if (typeof produto.id !== 'number') return false;
     if (typeof produto.descricao !== 'string') return false;
     if (typeof produto.valor !== 'number') return false;
@@ -52,27 +54,38 @@ function cadastrarProduto(produtoNovo) {
     if (listaDeProdutos.find(produto => produto.id === produtoNovo.id) !== undefined) {
         return MENSAGEM_ID_EXISTENTE;
     }
-    else if (!validaProduto(produtoNovo)) {
+    else if (!produtoEhValido(produtoNovo)) {
         return MENSAGEM_ERRO_PRODUTO;
     }
 
     listaDeProdutos.push(produtoNovo);
 }
 
+// testa se o código passado pelo cliente é um número e se este número existe na lista - função usada para excluir e encontrar produtos
+function codigoEhNumeroETaNaLista(codigo){
+    if (typeof codigo !== 'number' || listaDeProdutos.find(produto => produto.id === codigo) === undefined){
+        return false;
+    }
+    return true
+}
 
 var excluirProduto = codigo => {
-    if (typeof codigo !== 'number' || listaDeProdutos.find(produto => produto.id === codigo) === undefined) {
-        return "Não foi possível excluir o produto. Informe um código (id) válido.";
+    if (codigoEhNumeroETaNaLista(codigo)) {
+        listaDeProdutos = listaDeProdutos.filter(produto => produto.id !== codigo);
     }
-    listaDeProdutos = listaDeProdutos.filter(produto => produto.id !== codigo);
+    else {
+        return MENSAGEM_ERRO_EXCLUIR;
+    }
 }
 
 
-function encontrarProduto(codigo) {
-    if (typeof codigo !== 'number' || listaDeProdutos.find(produto => produto.id === codigo) === undefined) {
-        return "Não foi possível encontrar o produto. Informe um código (id) válido.";
+var encontrarProduto = codigo => {
+    if (codigoEhNumeroETaNaLista(codigo)) {
+        return listaDeProdutos.find(produto => produto.id === codigo);
     }
-    return listaDeProdutos.find(produto => produto.id === codigo);
+    else{
+        return MENSAGEM_ERRO_ENCONTRAR;
+    }
 }
 
 var imprimirListaDeProdutos = () => listaDeProdutos.forEach(produto => console.log(produto));
