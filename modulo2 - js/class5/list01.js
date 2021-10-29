@@ -40,20 +40,19 @@ var listaDeProdutos = [];
 const MENSAGEM_ERRO_PRODUTO = "Este produto não pode ser cadastrado pois não cumpre os requisitos do sistema.";
 const MENSAGEM_ID_EXISTENTE = "Este produto não pode ser cadastrado pois seu id já pertence a outro produto.";
 
-function validaProduto(produto){
-    if(typeof produto.id !=='number') return false;
-    if(typeof produto.descricao !=='string') return false;
-    if(typeof produto.valor !=='number') return false;
+function validaProduto(produto) {
+    if (typeof produto.id !== 'number') return false;
+    if (typeof produto.descricao !== 'string') return false;
+    if (typeof produto.valor !== 'number') return false;
 
     return true;
 }
 
-function cadastrarProduto(produtoNovo){
-    console.log('produndos.find', listaDeProdutos.find( produto => produto.id === produtoNovo.id) )
-    if(listaDeProdutos.find( produto => produto.id === produtoNovo.id)!==undefined){
+function cadastrarProduto(produtoNovo) {
+    if (listaDeProdutos.find(produto => produto.id === produtoNovo.id) !== undefined) {
         return MENSAGEM_ID_EXISTENTE;
     }
-    else if(!validaProduto(produtoNovo)){
+    else if (!validaProduto(produtoNovo)) {
         return MENSAGEM_ERRO_PRODUTO;
     }
 
@@ -62,23 +61,29 @@ function cadastrarProduto(produtoNovo){
 
 
 var excluirProduto = codigo => {
-    if(typeof codigo !=='number' || listaDeProdutos.find(produto => produto.id === codigo)===undefined){
+    if (typeof codigo !== 'number' || listaDeProdutos.find(produto => produto.id === codigo) === undefined) {
         return "Não foi possível excluir o produto. Informe um código (id) válido.";
     }
     listaDeProdutos = listaDeProdutos.filter(produto => produto.id !== codigo);
 }
 
 
-function encontrarProduto(codigo){
-    if(typeof codigo !=='number' || listaDeProdutos.find(produto => produto.id === codigo)===undefined){
+function encontrarProduto(codigo) {
+    if (typeof codigo !== 'number' || listaDeProdutos.find(produto => produto.id === codigo) === undefined) {
         return "Não foi possível encontrar o produto. Informe um código (id) válido.";
     }
     return listaDeProdutos.find(produto => produto.id === codigo);
 }
 
-var imprimirListaDeProdutos = () => listaDeProdutos.forEach(produto => console.log(produto))
+var imprimirListaDeProdutos = () => listaDeProdutos.forEach(produto => console.log(produto));
 
 
+
+var verificarTotalDePatrimonio = () => {
+    return listaDeProdutos.reduce((acumulador, valorAtual) => {
+        return acumulador + valorAtual.valor;
+    }, 0);
+}
 
 /* -- TESTES --*/
 
@@ -111,6 +116,10 @@ var produtoSemValor = {
 }
 
 var produtoSemDescricao = {
-    id:5,
+    id: 5,
     valor: 50
 }
+
+var produtosDeTeste = [produto1, produto2, produto3, produtoSemId, produtoSemValor, produtoSemDescricao];
+
+produtosDeTeste.forEach(teste => cadastrarProduto(teste));
