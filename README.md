@@ -9,3 +9,4 @@
 
 ## Js 
 1. Exercícios em dupla --> pasta class4
+2. Sistema de projetos e alocações --> pasta class6 / homework
