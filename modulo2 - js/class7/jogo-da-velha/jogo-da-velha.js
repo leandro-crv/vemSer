@@ -40,6 +40,7 @@ function iniciarJogo(){
 
     // Limpa tabuleiro e mensagens
     [...casasDoTabuleiro].forEach(c => c.innerText='');
+    document.getElementById('proximo-a-jogar').innerText = `Próximo a jogar: ${jogador1.simbolo} - ${jogador1.nome} `
     document.getElementById('titulo-resultado').innerText='';
 }
 
