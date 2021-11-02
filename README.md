@@ -10,3 +10,4 @@
 ## Js 
 1. Exercícios em dupla --> pasta class4
 2. Sistema de projetos e alocações --> pasta class6 / homework
+3. [Jogo da velha ](https://github.com/leandro-crv/vemSer/tree/master/modulo2%20-%20js/class7/jogo-da-velha)
