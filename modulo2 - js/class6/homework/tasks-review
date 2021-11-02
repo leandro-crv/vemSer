@@ -1,0 +1,11 @@
+- Ao cadastrar um colaborador e um projeto e alocar esse colaborador ao projeto, executando a opção 6 que deveria ter uma lista vazia, mostra o colaborador e ele está com o codProjeto null;
+
+- A mesma validação de nome inválido para o cadastro do colaborador não acontece ao cadastrar um projeto;
+
+- Se não informar nada na hora de marcar o ponto, é inserida uma marcação com dia: null e horas: null; Deveria ser obrigatório informar os 2;
+
+- Se informar strings como dia e hora  na opção de marcar o ponto, é inserida uma marcação com dia: null e horas: null; Deveria ter uma msg e não inserir a marcação no colaborador;
+
+- Aos buscar os objetos ali tu criou uma funcao "posicaoNaLista" e isso tu está trazendo o findIndex e usando esse index na lista como "array[index]", pode usar o find que trás o objeto para ti e não precisaria realizar aquele "array[index]";
+
+- Não que seja muito problema mas só para fins de informação, teus ids estão começando em 2;
