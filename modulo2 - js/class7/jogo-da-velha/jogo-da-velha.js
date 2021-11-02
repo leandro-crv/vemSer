@@ -13,13 +13,14 @@ class Jogador{
     }
 }
 
-const jogador1 = new Jogador('jogador1','x','red');
-const jogador2 = new Jogador('jogador2','o','blue');
+const jogador1 = new Jogador('jogador1','X','text-danger');
+const jogador2 = new Jogador('jogador2','O','text-primary');
 
 /*-- Casas do tabuleiro (realizada inicialização aqui para variável ser usada por funções abaixo) --*/
 
 var casasDoTabuleiro = document.querySelectorAll('.col');
 casasDoTabuleiro.forEach(c => c.addEventListener('click',(event)=> jogar(event.target.id)));
+var tabuleiroBloqueado = true;
 
 
 /*-- Partida --*/
@@ -29,6 +30,7 @@ var proximoAJogar = jogador1;
 document.getElementById('controle-jogo').addEventListener('click',() => iniciarJogo());
 
 function iniciarJogo(){
+    tabuleiroBloqueado ? tabuleiroBloqueado=false : '';
     // Troca mensagem no botão
     if(document.getElementById('controle-jogo').innerText==='Iniciar jogo') {
         document.getElementById('controle-jogo').innerText='Recomeçar jogo';
@@ -39,7 +41,11 @@ function iniciarJogo(){
     proximoAJogar=jogador1;
 
     // Limpa tabuleiro e mensagens
-    [...casasDoTabuleiro].forEach(c => c.innerText='');
+    [...casasDoTabuleiro].forEach(c => {
+        c.innerText='';
+        c.classList.remove('text-danger','text-primary');
+    });
+    
     document.getElementById('proximo-a-jogar').innerText = `Próximo a jogar: ${jogador1.simbolo} - ${jogador1.nome} `
     document.getElementById('titulo-resultado').innerText='';
 }
@@ -53,11 +59,16 @@ const trocaJogador = () => {
 /*-- Jogar --*/
 
 function jogar(id){
+    if(tabuleiroBloqueado){
+        alert("Clique em Iniciar jogo para começar a partida");
+        return
+    }
     const casa = document.getElementById(id);
     if(casa.innerText.length){
         console.log('Não é possível jogar nesta posição!')
     }
     else{
+        casa.classList.add(proximoAJogar.cor);
         casa.innerText = proximoAJogar.simbolo;
         jogadas++;
         verificaTabuleiro(parseInt(id));
