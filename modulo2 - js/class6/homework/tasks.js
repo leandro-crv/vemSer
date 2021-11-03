@@ -60,9 +60,9 @@
 
 /*-- Inicio da aplicação: listas vazias e função geradora de id --*/
 
-var ultimosIds = { colaborador: 1, projeto: 1 };
-var listaDeColaboradores = [];
-var listaDeProjetos = [];
+var ultimosIds = { colaborador: 0, projeto: 0 };
+// var listaDeColaboradores = [new Colaborador('Leandro'),new Colaborador('Felipe'),new Colaborador('Tiago'), new Colaborador('Jane')];
+// var listaDeProjetos = [new Projeto('Jogo da velha'), new Projeto('Layout css'), new Projeto('Linkedin')];
 
 class GeradorDeId {
     gerarIdColaborador() {
@@ -82,38 +82,43 @@ function menu(){
     
     let opcao = Number.parseInt(prompt("Bem-vindo ao sistema de projetos e alocações \n Escolha uma opção: \n 1 - Cadastrar Colaborador; \n 2 - Cadastrar Projeto; \n 3 - Alocar Colaborador; (à algum projeto) \n 4 - Desalocar Colaborador; \n 5 - Marcar Ponto; \n 6 - Ver Lista de Colaboradores Sem Projeto; \n7 - Ver Lista de Projetos Sem Colaboradores \n 8 - Ver Lista de Colaboradores Que Ainda Não Marcaram o Ponto;\n 9 - Encerrar Execução do Sistema;"));
 
-    if(!new Validacoes().ehNumber(opcao)){
-        alert(MENSAGEM_ERRO_OPCAO_INVALIDA);
-        menu();
-    }
-
-    switch (opcao){
+     switch (opcao){
         case 1:
             cadastrarColaborador();
+            menu();
             break;
         case 2:
             cadastrarProjeto();
+            menu();
             break;
         case 3:
             alocarColaboradorAProjeto();
+            menu();
             break;
         case 4:
             desalocarDeProjeto();
+            menu();
             break;
         case 5:
             marcarPonto();
+            menu();
             break;
         case 6:
             listarColaboradoresSemProjeto();
+            menu();
             break;
         case 7:
             listarProjetosSemColaboradores();
+            menu();
             break;
         case 8:
             listarColaboradoresSemPonto();
+            menu();
             break;
         case 9:
             return;
+        default:
+            console.log('Opção inválida');
 
     }
 
@@ -151,6 +156,15 @@ function posicaoDoIdNaLista(id, lista) {
     }
 }
 
+function encontrarObjeto(id,lista){
+    if(lista==='listaDeProjetos'){
+        return listaDeProjetos.find(p => p.codigo===id);
+    }
+    else if(lista==='listaDeColaboradores'){
+        return listaDeColaboradores.find(c => c.id===id);
+    }
+}
+
 const MENSAGEM_ERRO_OPCAO_INVALIDA = "Opção inválida. Escolha uma opção entra 1 e 9.";
 const MENSAGEM_ERRO_ID_NAO_ENCONTRADO = "Erro: id informado não foi encontrado. Verifique se digitou corretamente.";
 const MENSAGEM_ERRO_NOME_INVALIDO = "Erro: nome digitado não é válido.";
@@ -162,7 +176,7 @@ const MENSAGEM_SUCESSO_CADASTRO = "Cadastro realizado com sucesso: ";
 class Colaborador {
     id = new GeradorDeId().gerarIdColaborador();
     nome = '';
-    codProjeto = null;
+    codProjeto=0;
     marcacoesPonto = [];
 
     constructor(nome) {
@@ -198,9 +212,14 @@ class Projeto {
     colaboradoresAlocados = [];
     
     constructor(titulo){
-        this.titulo = new Validacoes().ehStringValida() ? titulo : this.titulo;
+        this.titulo = new Validacoes().ehStringValida(titulo) ? titulo : this.titulo;
     }
 }
+
+
+
+// var listaDeColaboradores = [new Colaborador('Leandro'),new Colaborador('Refael'),new Colaborador('Tiago'), new Colaborador('Joao')];
+// var listaDeProjetos = [new Projeto('Jogo da velha'), new Projeto('Layout css'), new Projeto('Linkedin')];
 
 // 1 - Cadastrar Colaborador;
 
@@ -211,11 +230,11 @@ function cadastrarColaborador() {
         let novoColaborador = new Colaborador(nome);
         listaDeColaboradores.push(novoColaborador);
         console.log(MENSAGEM_SUCESSO_CADASTRO, novoColaborador);
-        menu();
+       
     }
     else{
         alert(MENSAGEM_ERRO_NOME_INVALIDO);
-        menu();
+       
     }
 }
 
@@ -223,9 +242,15 @@ function cadastrarColaborador() {
 
 function cadastrarProjeto(){
     let titulo = prompt("Digite um titulo para o projeto");
-    let novoProjeto = new Projeto(titulo);
-    listaDeProjetos.push(novoProjeto);
-    menu();
+    if(titulo.length > 0){
+        let novoProjeto = new Projeto(titulo);
+        listaDeProjetos.push(novoProjeto);
+    }
+    else{
+        alert(MENSAGEM_ERRO_NOME_INVALIDO);
+    }
+    
+   
 }
 
 // 3 - Alocar Colaborador; (à algum projeto)
@@ -233,73 +258,84 @@ function cadastrarProjeto(){
 function alocarColaboradorAProjeto() {
     let idColaborador = Number.parseInt(prompt("Informe o id do colaborador"),10);
     let idProjeto = Number.parseInt(prompt("Informe o código do projeto"),10);
-    let indexColaborador = posicaoDoIdNaLista(idColaborador, 'listaDeColaboradores');
-    let indexProjeto = posicaoDoIdNaLista(idProjeto, 'listaDeProjetos')
+    let colaborador = encontrarObjeto(idColaborador,'listaDeColaboradores');
+    let projeto = encontrarObjeto(idProjeto,'listaDeProjetos')
    
-    if (indexColaborador !== -1 && indexProjeto !== -1) {
-        listaDeProjetos[indexProjeto].colaboradoresAlocados.push(listaDeColaboradores[indexColaborador]);
-        console.log(`colaborador ${listaDeColaboradores[indexColaborador].id} alocado ao projeto ${listaDeProjetos[indexProjeto].codigo} com sucesso!`);
-        menu();
+    if (colaborador !==undefined && projeto !==undefined) {
+        colaborador.codProjeto = idProjeto;
+        projeto.colaboradoresAlocados.push(colaborador);
+        console.log(`colaborador ${colaborador.nome} alocado ao projeto ${projeto.titulo} com sucesso!`);
+       
     }
     else {
         alert(MENSAGEM_ERRO_ID_NAO_ENCONTRADO);
-        menu();
+       
     }
 }
 
 // 4 - Desalocar Colaborador;
 function desalocarDeProjeto() {
     let idColaborador = Number.parseInt(prompt("Informe o id do colaborador"),10);
-    let idProjeto = Number.parseInt(prompt("Informe o código do projeto"),10);
-    let indexColaborador = posicaoDoIdNaLista(idColaborador, 'listaDeColaboradores');
-    let indexProjeto = posicaoDoIdNaLista(idProjeto, 'listaDeProjetos')
-    if (indexColaborador !== -1 && indexProjeto !== -1) {
-        listaDeProjetos[indexProjeto].colaboradoresAlocados = listaDeProjetos[indexProjeto].colaboradoresAlocados.filter(colaborador => colaborador.id !== idColaborador);
-        console.log(`colaborador ${listaDeColaboradores[indexColaborador].id} desalocado do projeto ${listaDeProjetos[indexProjeto].codigo} com sucesso!`);
-        menu();
+    let colaborador = encontrarObjeto(idColaborador,'listaDeColaboradores');
+
+    
+    if (colaborador!==undefined && colaborador.codProjeto!==0) {
+        let projeto = listaDeProjetos.find(p => p.codigo === colaborador.codProjeto);
+        projeto = projeto.colaboradoresAlocados.filter(c => c.id !==colaborador.id);
+        colaborador.codProjeto=0;
+        console.log(`colaborador ${colaborador.nome} desalocado do projeto ${projeto.titulo} com sucesso!`);
+       
     }
     else {
         alert(MENSAGEM_ERRO_ID_NAO_ENCONTRADO);
-        menu();
+       
     }
 }
 // 5 - Marcar Ponto;
 
 function marcarPonto(){
     let idColaborador = Number.parseInt(prompt("Informe o id do colaborador"),10);
+    let colaborador = encontrarObjeto(idColaborador,'listaDeColaboradores');
+    if(colaborador ===undefined){
+        alert(MENSAGEM_ERRO_ID_NAO_ENCONTRADO);
+        return
+       
+    }
+
     let dia = Number.parseInt(prompt("Informe o dia de trabalho"),10);
     let horas = Number.parseInt(prompt("Informe o número de horas trabalhadas"),10);
-    let indexColaborador = posicaoDoIdNaLista(idColaborador,'listaDeColaboradores');
-
-    if(indexColaborador ===-1){
-        alert(MENSAGEM_ERRO_ID_NAO_ENCONTRADO);
-        menu();
+    let marcacao = new Marcacao(dia,horas);
+    if(marcacao.dia!==null && marcacao.horas!==null){
+        listaDeColaboradores.find(c => c.id===idColaborador).marcarPonto(marcacao);
+        console.log(`Ponto marcado com sucesso!`);
     }
-    listaDeColaboradores[indexColaborador].marcarPonto(new Marcacao(dia,horas));
-    console.log(`Ponto marcado com sucesso!`);
-    menu();
+    else{
+        console.log(`Não foi possível marcar o ponto do colaborador ${colaborador.nome}, pois os dados são inválidos.`)
+    }
 
 }
 
 // 6 - Ver Lista de Colaboradores Sem Projeto;
 var listarColaboradoresSemProjeto = () => {
-    console.log('colaboradores sem projeto: ', listaDeColaboradores.filter(colaborador => colaborador.codProjeto===null));
-    menu();
+    console.log('colaboradores sem projeto: ', listaDeColaboradores.filter(colaborador => colaborador.codProjeto===0));
+   
 
 }
 
 // 7 - Ver Lista de Projetos Sem Colaboradores;
 var listarProjetosSemColaboradores = () => {
     console.log('projetos sem colaboradores: ', listaDeProjetos.filter(projetos => projetos.colaboradoresAlocados.length===0));
-    menu();
+   
 }
 // 8 - Ver Lista de Colaboradores Que Ainda Não Marcaram o Ponto;
 var listarColaboradoresSemPonto = () => {
     console.log('colaboradores que não marcaram ponto: ',listaDeColaboradores.filter(colaborador => colaborador.marcacoesPonto.length===0));
-    menu();
+   
 }
 
 // 9 - Encerrar Execução do Sistema; apenas return
+
+
 
 // inicia o programa
 menu();
