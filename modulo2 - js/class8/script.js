@@ -15,7 +15,7 @@ const validarEmail = () => { // deve retornar um boolean (true = válido, false 
     let ehValido = false;
     let campoEmail = document.getElementById('email-input-registration');
     // retira os espaços do email
-    campoEmail.value = campoEmail.value.replaceAll(' ','');
+    campoEmail.value = campoEmail.value.replaceAll(' ', '');
 
     let mensagemErro = document.getElementById('email-registration-error');
     let trocaClasse = () => mensagemErro.setAttribute('class', ehValido ? 'd-none' : 'text-danger');
@@ -23,7 +23,6 @@ const validarEmail = () => { // deve retornar um boolean (true = válido, false 
 
     // começa com letra ?
     if (!ehLetra(emailDigitado[0])) {
-        console.log('erro no começo com letra')
         ehValido = false;
         trocaClasse();
         return ehValido;
@@ -31,7 +30,6 @@ const validarEmail = () => { // deve retornar um boolean (true = válido, false 
 
     //termina com ponto ? 
     if (emailDigitado[emailDigitado.length - 1] === '.') {
-        console.log('erro por terminar com ponto')
         ehValido = false;
         trocaClasse();
         return ehValido;
@@ -41,7 +39,6 @@ const validarEmail = () => { // deve retornar um boolean (true = válido, false 
     let posicaoArroba = emailDigitado.findIndex(element => element === '@');
 
     if (posicaoArroba === -1) {
-        console.log('erro no @')
         ehValido = false;
         trocaClasse();
         return ehValido;
@@ -51,7 +48,6 @@ const validarEmail = () => { // deve retornar um boolean (true = válido, false 
     let arrayAposArroba = emailDigitado.slice(posicaoArroba + 1);
     let posicaoPonto = arrayAposArroba.findIndex(element => element === '.');
     if (posicaoPonto === -1 || posicaoPonto === 0 || posicaoPonto === -1) {
-        console.log('erro ponto após @')
         ehValido = false;
         trocaClasse();
         return ehValido;
@@ -66,7 +62,6 @@ const validarEmail = () => { // deve retornar um boolean (true = válido, false 
     })
     let pontosCorretos = posicoesDosPontos.every(pP => (ehLetra(emailDigitado[pP + 1]) && ehLetra(emailDigitado[pP + 2])));
     if (!pontosCorretos) {
-        console.log('erro nos pontos')
         ehValido = false;
         trocaClasse();
         return ehValido;
@@ -174,7 +169,7 @@ const validarData = () => { // deve retornar um boolean (true = válido, false =
     let inputData = document.getElementById('date-input-registration');
     let dataDigitada = inputData.value;
     let dataSemBarras = dataDigitada.replaceAll('/', '');
-    
+
     if (dataSemBarras.length === 2) {
         inputData.value = dataSemBarras + '/';
     }
@@ -183,8 +178,8 @@ const validarData = () => { // deve retornar um boolean (true = válido, false =
     }
     else if (dataSemBarras.length === 8) {
         let dataExiste = moment(dataSemBarras, 'DDMMYYYY', true).isValid();
-        let maiorDeIdade = moment().diff(moment(dataSemBarras,'DDMMYYYY'),'Years') >=18;
-        
+        let maiorDeIdade = moment().diff(moment(dataSemBarras, 'DDMMYYYY'), 'Years') >= 18;
+
         if (dataExiste && maiorDeIdade) ehValido = true;
     }
 
@@ -216,3 +211,62 @@ const programa = () => {
 
 
 programa();
+
+/* -- Testes --*/
+
+
+function executarTestes() {
+
+// email
+    var testeEmail = {
+        'ponto no inicio': '.teste@teste.com',
+        'sem Arroba': 'teste.com',
+        'ponto colado no Arroba': 'teste@.com',
+        'sem Ponto': 'teste@teste',
+        'ponto no final': 'teste@teste.com.',
+        'uma letra apenas após o ponto': 'teste@teste.com.b',
+        'email Válido': 'teste@teste.com'
+    }
+
+
+    // for in --> https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/for...in
+    let testeCampoEmail = document.getElementById('email-input-registration');
+    for (teste in testeEmail) {
+        testeCampoEmail.value = testeEmail[teste];
+        console.log(`${teste} (${testeEmail[teste]}) é válido: ${validarEmail()}`)
+    }
+
+    // senha 
+    var testeSenha = {
+        'sem Letra': '1234567/+*',
+        'sem Numero': 'Aaaaaaaaa*',
+        'sem Especial': 'Aa1111111',
+        'menos de 8 caracteres': 'Aa*1',
+        'sem Maiuscula': 'aaaaaaa1*',
+        'sem Minuscula': 'AAAAAAA1*',
+        'com Espaco': 'Aa1* aaaaaa',
+        'senha Válida': 'Aa/123456'
+    }
+
+    let testeCampoSenha = document.getElementById('password-input-registration');
+    for (teste in testeSenha) {
+        testeCampoSenha.value = testeSenha[teste];
+        console.log(`${teste} (${testeSenha[teste]}) é válido: ${validarSenha()}`)
+    }
+
+    // data
+
+    var testeData = {
+        'data Inexistente': '10202010',
+        'data Futura': '10102030',
+        'menor de idade': '03112021',
+        'data Válida': '04112000'
+    }
+
+    let testeCampoData = document.getElementById('date-input-registration')
+
+    for (teste in testeData) {
+        testeCampoData.value = testeData[teste];
+        console.log(`${teste} (${testeData[teste]}) é válido: ${validarData()}`)
+    }
+}
