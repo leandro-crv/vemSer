@@ -1,4 +1,7 @@
 
+// PARA TESTAR A APLICAÇÃO: executarTestes();
+
+
 const validarEmail = () => { // deve retornar um boolean (true = válido, false = inválido)
     /* 
         adicionar um eventListener para o evento "change" do input email-input que terá como ação esta função de validarEmail
