@@ -1,0 +1,30 @@
+{
+  "colaboradores": [
+    {
+      "nome": "admin",
+      "dataNascimento": "10/03/2003",
+      "email": "a@aa.com",
+      "senha": "aA12534/",
+      "id": 0
+    },
+    {
+      "email": "teste@teste.com",
+      "senha": "123456aA*",
+      "dataNascimento": "10/11/2000",
+      "id": 1
+    },
+    {
+      "email": "segundoteste@teste.com",
+      "senha": "123456aA/",
+      "dataNascimento": "05/12/2001",
+      "id": 2
+    },
+    {
+      "nome": "terceiro",
+      "dataNascimento": "04/12/2001",
+      "email": "terceiro@gg.com",
+      "senha": "12456/*aA",
+      "id": 3
+    }
+  ]
+}
