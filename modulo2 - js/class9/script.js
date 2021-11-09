@@ -136,6 +136,7 @@ const adicionarMascaraData = (input, data) => {
 
 
 const resetarCampos = (...campos) => {
+    console.log('campos são',campos)
     campos.forEach(c => c.value = '');
 }
 
@@ -146,7 +147,13 @@ const irPara = (origem, destino) => {
     elementoOrigem.className = elementoOrigem.className.replace('d-flex', 'd-none');
 }
 
-
+const apagarCampos = (campo) => {
+    console.log('campos',campo);
+    while (campo.firstChild) {
+        campo.removeChild(campo.lastChild);
+      }
+    
+}
 //#region Validação Nome
 const validarNome = () => {
     let elementoHtml = 'name-input-registration';
@@ -206,6 +213,7 @@ const irParaComClick = evento => {
 function permitirEdicao(id){
     irPara('home','registration-edit');
     console.log('id é: ',id);
+    idEditarAtual = id;
     axios.get(`http://localhost:3000/colaboradores/${id}`)
     .then(response => {
         let dados = response.data;
@@ -213,7 +221,7 @@ function permitirEdicao(id){
         document.getElementById('edit-date-input-registration').value=dados.data;
         document.getElementById('edit-email-input-registration').value=dados.email;
         document.getElementById('edit-password-input-registration').value=dados.senha;
-        document.getElementById('id-oculto').innerText=dados.id;
+        //document.getElementById('id-oculto').innerText=dados.id;
     })
     .catch(error => console.log('erro ao buscar colaborador',error))
 
@@ -238,6 +246,10 @@ const validarLogin = () => {
 
 const listarUsuarios = () => {
     // aqui entra lógica de GET para os usuários
+    let lisAnteriores = document.getElementById('user-list').querySelectorAll('li');
+    //console.log('lisAnteriores',lisAnteriores)
+    lisAnteriores.length ? apagarCampos(document.getElementById('user-list')) : '';
+   
     axios.get('http://localhost:3000/colaboradores')
         .then(response => {
             let listaUsuarios = response.data.map(u => u = {id: u.id, nome: u.nome});
@@ -302,7 +314,7 @@ const editValidarCadastro = () => {
     console.log(`Cadastro ${cadastroValido ? 'válido!' : 'inválido'}`);
 
     if(cadastroValido) {
-        editarUsuario(id);
+        editarUsuario(idEditarAtual);
     }
 }
 

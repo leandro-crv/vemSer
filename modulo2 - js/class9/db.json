@@ -25,6 +25,13 @@
       "email": "terceiro@gg.com",
       "senha": "12456/*aA",
       "id": 3
+    },
+    {
+      "nome": "b",
+      "dataNascimento": "10/10/2000",
+      "email": "b@bb.com",
+      "senha": "bA123*/a",
+      "id": 4
     }
   ]
 }

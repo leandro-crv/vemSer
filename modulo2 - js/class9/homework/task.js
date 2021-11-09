@@ -25,3 +25,5 @@
 // verificar data - undefined
 // limpar campos ao ir para próxima página
 // formatar layout
+// inserir máscara do nome
+// variável global para editar
