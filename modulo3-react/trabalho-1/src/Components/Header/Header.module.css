@@ -1,0 +1,17 @@
+.header{
+  background-color:#1A75C1;
+  padding:20px;
+  text-align: center;
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img{
+  width:100px;
+  border-radius: 100%;
+  margin-right:10px;
+}

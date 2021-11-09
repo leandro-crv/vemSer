@@ -1,0 +1,7 @@
+.titulo{
+  color:#1A75C1;
+}
+.listaCogumelos{
+  display: flex;
+  justify-content: space-between;
+}
