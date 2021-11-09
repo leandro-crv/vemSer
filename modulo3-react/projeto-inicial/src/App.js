@@ -1,24 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import FirstComponent from './components/FirstComponent';
+import List from './components/List';
+import Personal from './components/Personal';
+import SayMyName from './components/SayMyName';
+
 
 function App() {
+  const url = 'https://via.placeholder.com/150';
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>Leandro</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
+      <SayMyName name="Tiago"/>
+      <List />
+     
+            
     </div>
   );
 }
