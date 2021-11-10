@@ -1,0 +1,29 @@
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.listaUsuarios{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.usuario{
+  width: 300px;
+  border: solid thin black;
+  padding: 20px;
+  margin:8px;
+}
+
+.excluir{
+  float:right;
+  color: red;
+}
+
