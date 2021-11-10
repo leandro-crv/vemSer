@@ -17,3 +17,4 @@
 
 ## React
 1. [Primeiro trabalho](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/trabalho-1)
+2. [Segundo trabalho](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/trabalho-2)
