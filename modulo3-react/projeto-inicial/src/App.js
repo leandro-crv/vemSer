@@ -1,26 +1,36 @@
-import './App.css';
-import FirstComponent from './components/FirstComponent';
-import List from './components/List';
-import Personal from './components/Personal';
-import SayMyName from './components/SayMyName';
-import Form from './components/Form';
-import Eventos from './components/Eventos';
-import Condicional from './components/Condicional';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom';
+import Contato from './pages/Contato';
+import Empresa from './pages/Empresa';
+import Home from './pages/Home';
+
 
 
 function App() {
-  function calcular(num){
-    return num + 1;
-  }
-
+  
   return (
-    <div className="App">
-      {/* <Eventos calc={calcular}num={2}/> */}
-      {/* <Form/> */}
-      {/* <SayMyName calcular={calcular}/> */}
-      <Condicional/>
-            
-    </div>
+   <Router>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/empresa">Empresa</Link>
+        </li>
+        <li>
+          <Link to="/contato">Contato</Link>
+        </li>
+      </ul>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/empresa" element={<Empresa/>}/>
+        <Route path="/contato" element={<Contato/>}/>
+      </Routes>
+    </Router>
   );
 }
 

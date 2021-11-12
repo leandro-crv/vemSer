@@ -16,5 +16,6 @@
 5. [Trabalho final](https://github.com/brenolyES/Sistema-de-Vagas-DBC-)
 
 ## React
-1. [Primeiro trabalho](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/trabalho-1)
+1. [Primeiro trabalho](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/trabalho-1) - Criar componentes
 2. [Segundo trabalho](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/trabalho-2)
+3. [Terceiro trabalho](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/trabalho-1) - Utilizar react router
