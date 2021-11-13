@@ -52,7 +52,7 @@ function Form({ setUsers, users, idAtual, setIdAtual, valoresIniciais, setValore
         
       }
       else{
-        console.log('valores editados são: ',values);
+        
         let elemento = users.find(user => user.id === emEdicao.id);
         elemento = {
           id: emEdicao.id,
@@ -62,7 +62,7 @@ function Form({ setUsers, users, idAtual, setIdAtual, valoresIniciais, setValore
           address: values.address,
           phone: values.phone
         };
-        console.log('elemento é:',elemento)
+        
         setUsers([...users.filter(user => user.id !== emEdicao.id),elemento]);
         setEmEdicao({status:false,id:0});
         setValoresIniciais(valoresPadrao)

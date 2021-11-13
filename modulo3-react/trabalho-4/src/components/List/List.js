@@ -6,7 +6,7 @@ import {AiFillDelete} from 'react-icons/ai';
 
 function List({users, setUsers, setValoresIniciais, emEdicao, setEmEdicao, valoresPadrao}){
   const excluir = id => {
-    console.log('clicado no excluir')
+    
     if(emEdicao.status && emEdicao.id===id){
       setEmEdicao({status:false,id:0})
       setValoresIniciais(valoresPadrao)
@@ -18,7 +18,7 @@ function List({users, setUsers, setValoresIniciais, emEdicao, setEmEdicao, valor
     return [...users].sort((a,b) => a.id - b.id);
   }
   const editar = (id,usuario) => {
-    console.log('clicado no editar',id);
+   
     setEmEdicao({status: true, id: id})
     setValoresIniciais({
       firstName: usuario.firstName,
@@ -37,6 +37,7 @@ function List({users, setUsers, setValoresIniciais, emEdicao, setEmEdicao, valor
       </div>
       <div className={!emEdicao.status ? styles.lista : styles.listaOpaca}>
     {!users.length ? (<p className={styles.listaVazia}>Não há usuários cadastrados</p>) : null}
+    {emEdicao.status ? (<p className={styles.listaVazia}>Usuário {emEdicao.id} sendo editado na outra tela</p>):null}
     {ordenaArray(users).map(u => (
       <div className={styles.usuario} key={u.id}>
         <div className={styles.divBotoes}>

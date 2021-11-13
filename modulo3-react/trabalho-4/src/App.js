@@ -14,11 +14,20 @@ function App() {
   const [idAtual, setIdAtual] = useState(1);
   const valoresPadrao = {
     firstName: '',
-    lastName: 'carvalho',
-    email: 'leandro@gmail.com',
-    address: 'rua felipe de oliveira',
-    phone: '51991770315'
+    lastName: '',
+    email: '',
+    address: '',
+    phone: ''
   }
+
+  // valores iniciais para teste 
+  // const valoresPadrao = {
+  //   firstName: '',
+  //   lastName: 'sobrenome',
+  //   email: 'email@email.com',
+  //   address: 'rua teste',
+  //   phone: '51999999999'
+  // }
   const [valoresIniciais,setValoresIniciais] = useState(valoresPadrao);
   const [emEdicao,setEmEdicao] = useState({status: false, id: 0});
   
