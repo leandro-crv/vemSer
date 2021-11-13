@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom';
 import Menu from "../Menu/Menu";
 import styles from "./Header.module.css";
-function Header ({src, Link}){
-  const itens = [{nome: 'Home',href:'#'},{nome: 'Sobre',href:'#'},{nome: 'Contato',href:'#'}];
+function Header ({src}){
   return(
     <div className={styles.header}>
       <div className={styles.logo}>
@@ -10,7 +8,7 @@ function Header ({src, Link}){
       <small>Melhores alunos do VemSer de todos os tempos</small>
       </div>
       <nav className={styles.nav}>
-      {/* <Menu  Link={Link}/> */}
+      <Menu  posicao='horizontal'/>
       </nav>
     </div>
   );

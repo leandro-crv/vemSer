@@ -1,9 +1,11 @@
 .horizontal{
   display:flex;
   justify-content: space-between;
+ 
 }
 
 .vertical{
   display: flex;
   flex-direction: column;
+  
 }

@@ -20,29 +20,18 @@ const endereco = "Andaraí, 531 - Porto Alegre"
 function App() {
   return (
     <div className="App">
-      <Header src={cogumelo}/>
       <div clasName='App-container'>
-      <Router>
-      <ul className="menu">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/sobre">Sobre</Link>
-        </li>
-        <li>
-          <Link to="/contato">Contato</Link>
-        </li>
-      </ul>
-      <Routes>
-        <Route path="/" element={<Home cogumelo={cogumelo} mapa={mapa}/>}/>
-        <Route path="/sobre" element={<Sobre/>}/>
-        <Route path="/contato" element={<Contato/>}/>
-      </Routes>
-    </Router>
-    </div>
-    <Footer endereco={endereco} />
-      
+        <Router>
+          <Header src={cogumelo} />
+          <Routes>
+            <Route path="/" element={<Home cogumelo={cogumelo} mapa={mapa} />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/contato" element={<Contato />} />
+          </Routes>
+          <Footer endereco={endereco} />
+        </Router>
+      </div>
+
     </div>
   );
 }
