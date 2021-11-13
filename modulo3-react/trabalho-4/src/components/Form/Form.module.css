@@ -1,5 +1,6 @@
 .divForm{
   border: black thin solid;
+  border-radius:5px;
   min-width: 300px;
   min-height: 50vh;
 }
@@ -31,8 +32,9 @@
 .cadastrar{
   width: 50%;
   background-color: black;
+  border-radius: 5px;
   color: white;
-  padding:8px;
+  padding:4px;
   margin:0 auto;
 }
 
@@ -44,8 +46,9 @@
 .divBotoes button{
   width: 30%;
   background-color: black;
+  border-radius:5px;
   color: white;
-  padding:8px;
+  padding:4px;
 }
 
 .divBotoes button:first-child{

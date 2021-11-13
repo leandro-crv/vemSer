@@ -1,5 +1,6 @@
 .divLista{
   border: black thin solid;
+  border-radius:5px;
   min-width: 700px;
   min-height: 50vh;
 }
