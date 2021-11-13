@@ -1,0 +1,21 @@
+html,body{
+  margin:0;
+  padding:0;
+}
+
+.App-container{
+  max-width: 1200px;
+  height: 100vh;
+  margin:0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.error{
+  color:red;
+  font-size:12px;
+  margin-top:0;
+  margin-bottom:2px;
+}

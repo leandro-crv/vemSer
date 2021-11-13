@@ -1,0 +1,54 @@
+.divForm{
+  border: black thin solid;
+  min-width: 300px;
+  min-height: 50vh;
+}
+
+.titulo{
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+
+.form{
+  margin: 32px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+
+ .form input{
+  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+  padding-left:8px;
+  margin-bottom:8px;
+}
+
+.cadastrar{
+  width: 50%;
+  background-color: black;
+  color: white;
+  padding:8px;
+  margin:0 auto;
+}
+
+.divBotoes{
+  display: flex;
+  justify-content: space-between;
+}
+
+.divBotoes button{
+  width: 30%;
+  background-color: black;
+  color: white;
+  padding:8px;
+}
+
+.divBotoes button:first-child{
+  background-color: gray;
+  color:black;
+}
