@@ -1,5 +1,6 @@
 .divForm{
   border: black thin solid;
+  margin: 10px auto;
   border-radius:5px;
   min-width: 300px;
   min-height: 50vh;

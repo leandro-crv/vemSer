@@ -1,12 +1,7 @@
 import { useState } from 'react';
-
 import Form from './components/Form/Form';
 import List from './components/List/List';
-
 import './App.css';
-
-
-
 
 function App() {
 
@@ -20,21 +15,31 @@ function App() {
     phone: ''
   }
 
-  // valores iniciais para teste 
-  // const valoresPadrao = {
-  //   firstName: '',
-  //   lastName: 'sobrenome',
-  //   email: 'email@email.com',
-  //   address: 'rua teste',
-  //   phone: '51999999999'
-  // }
+
   const [valoresIniciais,setValoresIniciais] = useState(valoresPadrao);
   const [emEdicao,setEmEdicao] = useState({status: false, id: 0});
   
   return (
     <div className="App-container">
-     <Form setUsers={setUsers} users={users} idAtual={idAtual} setIdAtual={setIdAtual} valoresIniciais={valoresIniciais} setValoresIniciais={setValoresIniciais} emEdicao={emEdicao} setEmEdicao={setEmEdicao} valoresPadrao={valoresPadrao}/>
-     <List users={users} setUsers={setUsers} setValoresIniciais={setValoresIniciais} emEdicao={emEdicao} setEmEdicao={setEmEdicao} valoresPadrao={valoresPadrao}/>
+     <Form 
+      setUsers={setUsers} 
+      users={users} 
+      idAtual={idAtual} 
+      setIdAtual={setIdAtual} 
+      valoresIniciais={valoresIniciais} 
+      setValoresIniciais={setValoresIniciais} 
+      emEdicao={emEdicao} 
+      setEmEdicao={setEmEdicao} 
+      valoresPadrao={valoresPadrao}
+     />
+     <List 
+      users={users} 
+      setUsers={setUsers} 
+      setValoresIniciais={setValoresIniciais} 
+      emEdicao={emEdicao} 
+      setEmEdicao={setEmEdicao} 
+      valoresPadrao={valoresPadrao}
+     />
     </div>
   );
 }

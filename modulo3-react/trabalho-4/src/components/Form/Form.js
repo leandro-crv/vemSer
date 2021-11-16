@@ -44,7 +44,7 @@ function Form({ setUsers, users, idAtual, setIdAtual, valoresIniciais, setValore
     enableReinitialize: true,
     validate,
     onSubmit: values => {
-      console.log(values)
+      
       if(!emEdicao.status){
         values.id = idAtual;
         setIdAtual(idAtual+1);
@@ -85,12 +85,12 @@ function Form({ setUsers, users, idAtual, setIdAtual, valoresIniciais, setValore
     <form onSubmit={formik.handleSubmit} className={styles.form}>
       <div>
         <label>Primeiro nome:</label>
-        <input type="text" name="firstName" id="firstName" onChange={formik.handleChange} value={formik.values.firstName} />
+        <input type="text" name="firstName" id="firstName" onChange={formik.handleChange} value={formik.values.firstName} maxLength="20"/>
         {formik.errors.firstName ? (<div className='error'>{formik.errors.firstName}</div>): null}
       </div>
       <div>
         <label>Último nome:</label>
-        <input type="text" name="lastName" id="lastName" onChange={formik.handleChange} value={formik.values.lastName} />
+        <input type="text" name="lastName" id="lastName" onChange={formik.handleChange} value={formik.values.lastName} maxLength="20"/>
         {formik.errors.lastName ? (<div className='error'>{formik.errors.lastName}</div>): null}
       </div>
       <div>
