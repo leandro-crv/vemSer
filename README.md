@@ -2,15 +2,15 @@
 
 ## Html e css
 
-1. página ecos conforme figma --> pasta ecos
-2. Página dos cogumelos com home, sobre e contato --> pasta home-about-contact
-3. Layouts figma (4 telas) --> pasta layouts
-4. Layouts figma (4 telas) utilizando bootstrap --> pasta layouts_bootstrap
+1. [página ecos conforme figma](https://github.com/leandro-crv/vemSer/tree/master/modulo1%20-%20html_css/ecos)
+2. [Página dos cogumelos com home_sobre_ e_contato](https://github.com/leandro-crv/vemSer/tree/master/modulo1%20-%20html_css/home-about-contact)
+3. [Layouts figma (4 telas)](https://github.com/leandro-crv/vemSer/tree/master/modulo1%20-%20html_css/layouts) 
+4. [Layouts figma (4 telas) utilizando bootstrap](https://github.com/leandro-crv/vemSer/tree/master/modulo1%20-%20html_css/layouts_bootstrap)
 5. [Trabalho final](https://github.com/leandro-crv/linkedin)
 
 ## Js 
-1. Exercícios em dupla --> pasta class4
-2. Sistema de projetos e alocações --> pasta class6 / homework
+1. [Exercícios em dupla](https://github.com/leandro-crv/vemSer/tree/master/modulo2%20-%20js/class4)
+2. [Sistema de projetos e alocações](https://github.com/leandro-crv/vemSer/tree/master/modulo2%20-%20js/class6/homework)
 3. [Jogo da velha ](https://github.com/leandro-crv/vemSer/tree/master/modulo2%20-%20js/class7/jogo-da-velha)
 4. [Validações de formulários](https://github.com/leandro-crv/vemSer/tree/master/modulo2%20-%20js/class8)
 5. [Trabalho final](https://github.com/brenolyES/Sistema-de-Vagas-DBC-)
