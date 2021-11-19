@@ -39,6 +39,7 @@
   margin-top:16px;
 }
 .App-newsOpen svg{
-  width: 2rem;
+  font-size:2rem;
   float: right;
+  
 }

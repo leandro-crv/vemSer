@@ -4,9 +4,6 @@ import Card from "../components/Card";
 import {MdError} from 'react-icons/md';
 import loading from '../loading.gif';
 
-
-
-
 const Context = createContext();
 
 function ContextProvider({children}) {
