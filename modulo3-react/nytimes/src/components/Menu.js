@@ -8,16 +8,16 @@ function Menu(){
           <Link to='/'>Home</Link>
         </li>
         <li>
-          <Link to='/ciencia'>Ciencia</Link>
+          <Link to='/science'>Science</Link>
         </li>
         <li>
-          <Link to='/mundo'>Mundo</Link>
+          <Link to='/world'>World</Link>
         </li>
         <li>
-          <Link to='/politica'>Politica</Link>
+          <Link to='/politics'>Politics</Link>
         </li>
         <li>
-          <Link to='/saude'>Saude</Link>
+          <Link to='/health'>Health</Link>
         </li>
       </ul>
     </nav>

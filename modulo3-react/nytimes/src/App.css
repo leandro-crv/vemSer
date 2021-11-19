@@ -8,3 +8,37 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.App-erro-api{
+  margin:25%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+
+.App-erro-api svg{
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.App-loading{
+ text-align: center;
+ margin-top: 25%;
+}
+
+
+.App-opacity{
+  opacity: 0.3;
+}
+
+.App-newsOpen{
+  padding:16px;
+  margin-top:16px;
+}
+.App-newsOpen svg{
+  width: 2rem;
+  float: right;
+}

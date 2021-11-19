@@ -8,10 +8,8 @@ import {GiHealthNormal} from 'react-icons/gi';
 import {AiFillHome} from 'react-icons/ai';
 import {BiWorld} from 'react-icons/bi';
 
-
-
 function Header(){
-  const {subject,sectionEIcon} = useContext(Context);
+  const {subject} = useContext(Context);
  
   return(
     <header className={styles.header}>

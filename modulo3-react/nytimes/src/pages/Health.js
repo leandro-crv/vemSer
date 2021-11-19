@@ -2,7 +2,7 @@ import {useContext, useEffect, useState} from 'react';
 import {Context} from '../context/Context';
 import News from '../components/News';
 
-function Home(){
+function Health(){
   const {getNews, Card, setSubject, MdError,loading} = useContext(Context);
   const [news,setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,8 +21,8 @@ function Home(){
     (async  () => {
       if(!isOpenNews){
         setIsLoading(true);
-        setNews(await getNews('home'));
-        setSubject('home');
+        setNews(await getNews('health'));
+        setSubject('health');
         setIsLoading(false);
       }
     })();  
@@ -71,4 +71,4 @@ function Home(){
   );
 }
 
-export default Home;
+export default Health;

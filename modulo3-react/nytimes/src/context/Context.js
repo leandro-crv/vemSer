@@ -1,6 +1,9 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 import Card from "../components/Card";
+import {MdError} from 'react-icons/md';
+import loading from '../loading.gif';
+
 
 
 
@@ -8,12 +11,18 @@ const Context = createContext();
 
 function ContextProvider({children}) {
   const [subject, setSubject] = useState('home');
-
+  const erro = 'Erro no servidor. Contate o administrador do sistema.';
+  
   async function getNews(subject) {
-      const { data: { results } } = await axios.get(`https://api.nytimes.com/svc/topstories/v2/${subject}.json?api-key=IpOG848IcZsSgESNzLUYh8LlTIklgEO4`);
-      console.log('subject é: ', subject)
-      console.log('data é:', results)
-      return results;
+      try{
+        const response = await axios.get(`https://api.nytimes.com/svc/topstories/v2/${subject}.json?api-key=IpOG848IcZsSgESNzLUYh8LlTIklgEO4`);
+        console.log(response.data.results)
+        return response.data.results;
+      }
+      catch(error){
+        return erro;
+      }
+
     };
   
   return (
@@ -22,7 +31,8 @@ function ContextProvider({children}) {
       Card,
       subject,
       setSubject,
-     
+      MdError,
+      loading,
       }}
     >
       {children}

@@ -3,6 +3,16 @@
   font-family: nyt-imperial,georgia,'times new roman',times,serif;
   line-height: 1.5625rem;
   margin: 12px 0;
+  text-align: justify;
+}
+
+.card:hover{
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+.normalImg{
+  width: 200px;
 }
 
 .card div:first-child{
@@ -18,7 +28,7 @@
   margin-right: 16px;
 }
 
-.dateEauthor span:last-child{
+.author{
   color:goldenrod;
   font-weight: bold;
 }
@@ -28,4 +38,23 @@
   text-align: justify;
   color:gray;
 
+}
+
+
+.newPage{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.newPage div:first-child{
+  margin-right: 24px;
+}
+
+.newPage p{
+  margin-top: 16px;
+}
+
+.newPage img{
+  max-width: 500px;
 }
