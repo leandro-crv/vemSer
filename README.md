@@ -21,5 +21,5 @@
 3. [Terceiro trabalho](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/trabalho-1) - Utilizar react router
 4. [Quarto trabalho - CRUD](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/trabalho-4)
 5. [Context](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/context)
-6. [Trabalho consumindo API](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/login/front
+6. [Trabalho consumindo API](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/login/front)
 7. [Api NyTimes](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/nytimes)
