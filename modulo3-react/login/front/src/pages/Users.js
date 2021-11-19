@@ -13,12 +13,15 @@ function Users(){
   },[]);
 
   return(
+    <>
     <ul>
       {users.map((user)=>(
-        <li key={user.id}>{user.name}</li>
+        <li key={user.id}>{user.name} <a href={user.website}>{user.website}</a></li>
       )
       )}
     </ul>
+    <button>Sair</button>
+    </>
   )
 }
 

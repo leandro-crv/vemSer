@@ -3,11 +3,12 @@ import './App.css';
 import Routers from './routers';
 import { AuthProvider } from './context/AuthContext';
 
+
 function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <Routers/>
+        <Routers />
       </AuthProvider>
   
     </div>

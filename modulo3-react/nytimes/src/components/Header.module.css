@@ -1,0 +1,26 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  padding:36px;
+  background-color: black;
+  color:white;
+}
+
+.subject{
+  text-transform: capitalize;
+  
+  
+}
+
+.logo{
+  display: flex;
+  align-items: center;
+  font-size:1.2rem;
+  
+}
+
+.logo svg{
+  vertical-align: middle;
+  margin-bottom:2px;
+  margin-right: 4px;
+}

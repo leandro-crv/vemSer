@@ -1,0 +1,17 @@
+.menu ul{
+  display: flex;
+}
+
+.menu li{
+  list-style: none;
+  margin-right: 16px;
+}
+
+.menu a{
+  text-decoration: none;
+  color: white;
+}
+
+.menu a:hover{
+  text-decoration: underline;
+}
