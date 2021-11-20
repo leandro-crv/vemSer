@@ -43,3 +43,29 @@
   float: right;
   
 }
+
+.App-user{
+  display: flex;
+  justify-self: right;
+  
+}
+
+.App-user div{
+  margin-left:8px;
+}
+
+.App-user svg{
+  font-size: 2rem;
+}
+
+.App-linkLogin{
+  color:blue;
+  margin:10px auto;
+  
+}
+
+.App-linkLogin:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+

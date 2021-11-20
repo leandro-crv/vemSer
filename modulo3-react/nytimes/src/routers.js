@@ -12,6 +12,7 @@ import Politics from "./pages/Politics";
 import Health from "./pages/Health";
 import Header from "./components/Header";
 
+
 function Routers() {
   return (
     <BrowserRouter>

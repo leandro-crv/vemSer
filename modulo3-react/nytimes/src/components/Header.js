@@ -8,11 +8,16 @@ import {GiHealthNormal} from 'react-icons/gi';
 import {AiFillHome} from 'react-icons/ai';
 import {BiWorld} from 'react-icons/bi';
 
+import User from "./User";
+import Login from './Login';
+import { LoginContext } from "../context/Login";
+
 function Header(){
   const {subject} = useContext(Context);
+  const {setOpenModalLogin} = useContext(LoginContext);
  
   return(
-    <header className={styles.header}>
+    <header className={styles.header} >
       <div className={styles.logo}>
         <div>
         { subject==='science'?
@@ -31,6 +36,8 @@ function Header(){
         <div className={styles.subject}>{subject}</div>
       </div>
       <div>
+        <User/>
+        <Login/>
         <Menu/>
       </div>
     </header>

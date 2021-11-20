@@ -1,9 +1,12 @@
 import {useContext, useEffect, useState} from 'react';
 import {Context} from '../context/Context';
+import { LoginContext } from '../context/Login';
 import News from '../components/News';
 
 function Health(){
   const {getNews, Card, setSubject, MdError,loading} = useContext(Context);
+  const {login,setOpenModalLogin} = useContext(LoginContext);
+
   const [news,setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpenNews, setIsOpenNews] = useState(false);
@@ -29,6 +32,11 @@ function Health(){
 
   },[isOpenNews])
 
+  useEffect(()=>{
+    (async ()=>{
+      setNews(await getNews('health'));
+    })();
+  },[login])
   
   return(
     <div >
@@ -60,9 +68,12 @@ function Health(){
        
          </li>
       ))}
-     
+        
       </ul>
       )}
+      {!login && !isOpenNews? 
+      (<span onClick={()=> setOpenModalLogin(true)} className='App-linkLogin'>Para ler mais, faça login</span>)
+    :null}
       {isOpenNews ? (
         <News news={openNews} setIsOpenNews={setIsOpenNews} />
       ):null}

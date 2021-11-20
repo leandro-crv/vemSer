@@ -1,14 +1,16 @@
 import './App.css';
 import Routers from './routers';
 import { ContextProvider } from './context/Context';
+import { LoginProvider } from './context/Login';
 
 
 function App() {
   return (
-    <ContextProvider>
-      <Routers/>
-    </ContextProvider>
-      
+    <LoginProvider>
+      <ContextProvider>
+        <Routers />
+      </ContextProvider>
+    </LoginProvider>
   );
 }
 
