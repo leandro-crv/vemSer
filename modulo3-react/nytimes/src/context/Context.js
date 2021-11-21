@@ -15,7 +15,6 @@ function ContextProvider({children}) {
   async function getNews(subject) {
       try{
         const response = await axios.get(`https://api.nytimes.com/svc/topstories/v2/${subject}.json?api-key=IpOG848IcZsSgESNzLUYh8LlTIklgEO4`);
-        console.log(response.data.results)
         if(login){
           return response.data.results;
         }

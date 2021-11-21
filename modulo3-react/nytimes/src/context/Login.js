@@ -6,9 +6,10 @@ function LoginProvider({children}){
   const [login, setLogin] = useState(false);
   const [user, setUser] = useState('');
   const [openModalLogin, setOpenModalLogin] = useState(false);
+  
+  // Quando a página é carregada a primeira vez verifica se tem usuário no localstorage
   useEffect(()=>{
     const userLogin = localStorage.getItem("user");
-    console.log('database',database)
     if(userLogin===null){
       setLogin(false);
       setUser('');
@@ -20,7 +21,9 @@ function LoginProvider({children}){
     }
   },[]);
 
-  function handleLogin(action,userTeste){
+ 
+
+  function handleLogin(action){
     if(action==='login'){
       console.log('user no handlelogin',user)
       setLogin(true);
@@ -39,8 +42,8 @@ function LoginProvider({children}){
     const login =  database.find(element => element.user===userParameter && element.password===passwordParameter)!==undefined;
     if(login){
       console.log('userParameter',userParameter)
-      handleLogin('login');
       setUser(userParameter);
+      handleLogin('login');
     }
     else{
       return 'Usuário não encontrado ou senha inválida';
