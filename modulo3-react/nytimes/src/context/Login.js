@@ -6,6 +6,8 @@ function LoginProvider({children}){
   const [login, setLogin] = useState(false);
   const [user, setUser] = useState('');
   const [openModalLogin, setOpenModalLogin] = useState(false);
+  const [errorLogin, setErrorLogin] = useState(false);
+  const msgErrorLogin = 'Usuário não encontrado ou senha inválida';
   
   // Quando a página é carregada a primeira vez verifica se tem usuário no localstorage
   useEffect(()=>{
@@ -35,6 +37,7 @@ function LoginProvider({children}){
       setUser('');
       setLogin(false);
       setOpenModalLogin(false);
+      setErrorLogin(false);
     }
   }
 
@@ -42,11 +45,12 @@ function LoginProvider({children}){
     const login =  database.find(element => element.user===userParameter && element.password===passwordParameter)!==undefined;
     if(login){
       console.log('userParameter',userParameter)
+      setErrorLogin(false);
       setUser(userParameter);
       handleLogin('login');
     }
     else{
-      return 'Usuário não encontrado ou senha inválida';
+      setErrorLogin(true);
     }
   }
 
@@ -58,7 +62,9 @@ function LoginProvider({children}){
         verifyLogin,
         handleLogin,
         openModalLogin,
-        setOpenModalLogin
+        setOpenModalLogin,
+        errorLogin,
+        msgErrorLogin
       }}
     >
       {children}

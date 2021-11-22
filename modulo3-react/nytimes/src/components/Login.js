@@ -3,7 +3,7 @@ import { LoginContext } from "../context/Login";
 
 
 function Login(){
-  const {verifyLogin, handleLogin, login, openModalLogin} = useContext(LoginContext);
+  const {verifyLogin, handleLogin, login, openModalLogin, errorLogin, msgErrorLogin} = useContext(LoginContext);
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
   return(
@@ -21,7 +21,9 @@ function Login(){
         :
         (<button type='submit' onClick={()=> handleLogin('logout')}>Logout</button>)  
       }
-
+      {errorLogin ? (
+        <span>{msgErrorLogin}</span>
+      ):null}
     </div>
     ):null}
     </>
