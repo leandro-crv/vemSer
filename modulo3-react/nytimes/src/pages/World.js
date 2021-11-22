@@ -56,14 +56,7 @@ function World(){
         
         <li key={index} id={index} onClick={()=> handleOpenNews(index)}>
           {n.title ? (
-             <Card
-             title={n.title}
-             published_date={n.published_date}
-             byline={n.byline}
-             img={n.multimedia !==null ? n.multimedia[0].url : false}
-             abstract={n.abstract}
-            
-           />
+             <Card info={n} newPage={false}/>
           ):null}
        
          </li>
