@@ -23,3 +23,4 @@
 5. [Context](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/context)
 6. [Trabalho consumindo API](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/login/front)
 7. [Api NyTimes](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/nytimes)
+8. [Instalação e ambientação Next](https://github.com/leandro-crv/vemSer/tree/master/modulo3-react/next)
