@@ -7,11 +7,16 @@ const Menu = () =>{
   return(
     <nav className={styles.menu}>
       <ul>
-        <li>
+        {!auth ? (
+          <li>
           <Link to='/login'>Entrar</Link>
         </li>
+        ):null}
         <li>
           <Link to='/pessoa'>Pessoa</Link>
+        </li>
+        <li>
+          <Link to='/cadastro'>Cadastro</Link>
         </li>
         <li>
           <Link to='/endereco'>Endereço</Link>

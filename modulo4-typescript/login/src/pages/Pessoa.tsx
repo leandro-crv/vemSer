@@ -14,6 +14,9 @@ const Pessoa = () => {
     getPessoas();
   }, [])
 
+  const addMaskCpf = (cpf:string) =>{
+    return `${cpf[0]}${cpf[1]}${cpf[2]}.${cpf[3]}${cpf[4]}${cpf[5]}.${cpf[6]}${cpf[7]}${cpf[8]}-${cpf[9]}${cpf[10]}`
+  }
 
   return (
     <>
@@ -30,7 +33,7 @@ const Pessoa = () => {
             </div>
             <div className={styles.pessoaInfo}>
               <div><span className={styles.pessoaLabel}>Nome: </span>{pessoa.nome}</div>
-              <div><span className={styles.pessoaLabel}>CPF: </span>{pessoa.cpf}</div>
+              <div><span className={styles.pessoaLabel}>CPF: </span>{addMaskCpf(pessoa.cpf)}</div>
               <div><span className={styles.pessoaLabel}>E-mail: </span>{pessoa.email}</div>
               <div><span className={styles.pessoaLabel}>Data de nascimento: </span><Moment date={pessoa.dataNascimento} format='DD/MM/YYYY'/></div>
             </div>

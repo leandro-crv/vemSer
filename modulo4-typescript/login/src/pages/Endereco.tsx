@@ -33,9 +33,8 @@ const Endereco = () => {
   const [address, setAdress] = useState<EnderecoDTO>(initialAddress);
   const getAddress = async (cep: string) => {
     const { data } = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
-    console.log('data é: ', data)
+    
     if (data.erro) {
-      console.log("data error")
       setAddressValid(false);
       setAdress(initialAddress);
     }
@@ -120,7 +119,6 @@ const Endereco = () => {
           values: EnderecoDTO,
           { setSubmitting }: FormikHelpers<EnderecoDTO>
         ) => {
-          console.log('values submit endereço', values);
           postEndereco(values, idPessoa)
           setAdress(initialAddress);
           setSubmitting(false);

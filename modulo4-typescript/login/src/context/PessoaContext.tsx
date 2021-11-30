@@ -43,13 +43,10 @@ const PessoaProvider: React.FC<ReactNode> = ({children}) =>{
 
   const postPessoa = async (pessoa: PessoaDTO) =>{
     const {data} = await api.post('pessoa',pessoa);
-    console.log('data no post é: ', data)
     navigate('/pessoa');
   }
 
   const postEndereco = async (endereco: EnderecoDTO, id: number) =>{
-    console.log(`post pessoa id: ${id}`);
-    console.log('endereço é: ', endereco);
     endereco.cep = endereco.cep.replaceAll(new RegExp(/[_-]/,'g'),'');
     const {data} = await api.post(`endereco/${id}`, endereco);
     console.log('post de endereço: ', data);
@@ -58,7 +55,6 @@ const PessoaProvider: React.FC<ReactNode> = ({children}) =>{
   // EXCLUIR
 
   const deletePessoa = async(id:number) =>{
-    console.log('id no delete',id)
     const {data} = await api.delete(`pessoa/${id}`);
     getPessoas();
   }

@@ -1,4 +1,4 @@
-import styles from './Cadastro.module.css'
+import ReactInputMask from 'react-input-mask';
 import {
   Formik,
   FormikHelpers,
@@ -10,7 +10,7 @@ import {
   ErrorMessage
 } from 'formik';
 import moment from 'moment';
-import ReactInputMask from 'react-input-mask';
+import styles from './Cadastro.module.css';
 
 // https://www.npmjs.com/package/react-input-mask
 // import ReactInputDateMask from 'react-input-date-mask';
@@ -18,7 +18,7 @@ import ReactInputMask from 'react-input-mask';
 
 
 import { PessoaDTO } from '../model/PessoaDTO';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { PessoaContext } from '../context/PessoaContext';
 
 
@@ -27,6 +27,13 @@ const Cadastro: React.FC<{}> = () => {
   const { postPessoa } = useContext<any>(PessoaContext);
   const { infoPessoa, edit, cancelEdit, putPessoa } = useContext<any>(PessoaContext);
   const initialValues: PessoaDTO = infoPessoa;
+
+  useEffect(()=>{
+    if(initialValues.dataNascimento.length){
+      const newData = initialValues.dataNascimento.split('-');
+      initialValues.dataNascimento = newData.reverse().join('');
+    }
+  },[])
 
   const validate = (values: PessoaDTO) => {
     const errors: FormikErrors<PessoaDTO> = {};
@@ -39,17 +46,27 @@ const Cadastro: React.FC<{}> = () => {
       errors.email = 'Email inválido';
     }
 
-    if(!values.cpf){
-      errors.cpf = 'CPF é obrigatório';
-    } else if(values.cpf.length!==11){
-      errors.cpf = 'CPF deve conter 11 dígitos. Não adicionar "." ou "-"';
+    
+    const cpfNumeros = removeMaskCpf(values.cpf);
+    if(cpfNumeros.length!==11){
+      errors.cpf = 'CPF deve conter 11 dígitos';
     }
-    if (!values.dataNascimento) {
-      errors.dataNascimento = 'Data de nascimento é obrigatório';
+
+     console.log('data', values.dataNascimento) 
+    if (values.dataNascimento.length!==10) {
+      errors.dataNascimento = 'Data de nascimento inválida';
+    } else if(!moment(values.dataNascimento).isValid()){
+      errors.dataNascimento = 'Data de nascimento inválida';
     } else if(!(moment(values.dataNascimento).startOf('day').fromNow()).match(/ago/)){
       errors.dataNascimento = 'Data não pode ser superior a hoje';
     }  
+
     return errors;
+  }
+
+
+  const removeMaskCpf = (cpf:string)=>{
+    return cpf.replaceAll(new RegExp(/[._-]/,'g'),'');
   }
 
   return (
@@ -60,6 +77,8 @@ const Cadastro: React.FC<{}> = () => {
         validate={validate}
         enableReinitialize={true}
         onSubmit={(values, actions) => {
+          // console.log({ values, actions });
+          values.cpf = removeMaskCpf(values.cpf)
           console.log({ values, actions });
           !edit ? postPessoa(values) : putPessoa(values);
           actions.setSubmitting(false);
@@ -78,12 +97,14 @@ const Cadastro: React.FC<{}> = () => {
           </div>
           <div>
             <label>CPF:</label>
-            <Field name="cpf" placeholder="cpf" />
+            <Field name="cpf" placeholder="cpf" render={({field}:any)=>(
+              <ReactInputMask {...field} mask={`999.999.999.-99`} placeholder="Insira seu cpf" />
+            )} />
             <ErrorMessage name='cpf' />
           </div>
           <div>
             <label>Data de nascimento:</label>
-            <Field type='date' name="dataNascimento" placeholder="data de nascimento" />
+            <Field type='date' name="dataNascimento"/>
             <ErrorMessage name='dataNascimento' />
           </div>
           <div className={styles.alinharBotoes}>
