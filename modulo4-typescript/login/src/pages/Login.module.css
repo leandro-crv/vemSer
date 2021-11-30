@@ -1,0 +1,35 @@
+.login{
+  background-color: lightgrey;
+  padding: 16px;
+  min-height: calc(521px - 64px);
+  margin: 16px auto;
+ max-width: max-content;
+}
+
+.login .titulo{
+  text-align: center;
+}
+
+.login form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login form div{
+  display: flex;
+  flex-direction: column;
+  margin-bottom:16px;
+}
+
+.login form label{
+  margin-bottom: 4px;
+  margin-left: 2px;
+}
+.login form input{
+  border-radius:8px;
+  padding:16px;
+  border:lightgray solid thin;
+  width: 400px;
+}

@@ -40,7 +40,7 @@ const Card: React.FC<IProps> = ({ info, repositorios }) => {
             </div>
           </div>
           <div className='data-seguidores'>
-            <span>Criado em <Moment date={info.createAt} format="DD MMM. YYYY" /></span>
+            <span>Criado em <Moment date={info.createAt} format="DD/MM/YYYY" /></span>
             <span>Seguidores {info.followers}</span>
           </div>
         </div>

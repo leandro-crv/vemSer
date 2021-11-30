@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  margin: 0;
+  padding:0;
+  list-style: none;
+    font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fffafa;
+  
+}
+
+.container{
+  max-width: 1200px;
+  margin:0 auto;
+  min-height: calc(100vh - 214px);
+  
+}
+
+.none{
+  display: none;
+}
+
+.error{
+  color: red;
+}
+
+
+.pageEndereco{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exibirEndereco{
+  margin-top: 32px;
+  height: 200px;
+  border: gray solid thin;
+  padding: 16px;
+  width: 30%;
+}
+
+.endereco li{
+  list-style: none;
+}
+
+.label{
+  font-weight: bold;
+}
+
+.botao1{
+  width: 150px;
+  padding: 8px;
+  text-align: center;
+  background-color: black;
+  color:white;
+  border-radius: 10px;
+  border: gray solid thin;
+  font-weight: bold;
+}
+
+.botao1:hover{
+  width: 150px;
+  padding: 8px;
+  text-align: center;
+  background-color: lightgray;
+  color: black;
+  border-radius: 10px;
+  border: gray solid thin;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.botao2{
+  width: 150px;
+  padding: 8px;
+  text-align: center;
+  background-color: lightgray;
+  color: black;
+  border-radius: 10px;
+  border: gray solid thin;
+  font-weight: bold;
+}
+
+.botao2:hover{
+  width: 150px;
+  padding: 8px;
+  text-align: center;
+  background-color: black;
+  color:white;
+  border-radius: 10px;
+  border: gray solid thin;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.notFound{
+  text-align: center;
+}
+
+.form-usuario button{
+  margin-bottom: 16px;
+}
