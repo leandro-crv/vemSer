@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import gif404 from '../images/gif404.gif';
 
 const NotFound = ()=>{
-  const [timer, setTimer] = useState(5);
+  const [timer, setTimer] = useState(10);
   const navigate = useNavigate();
   const {auth} = useContext<any>(AuthContext);
 

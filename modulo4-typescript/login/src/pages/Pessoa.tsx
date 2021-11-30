@@ -23,7 +23,7 @@ const Pessoa = () => {
       <h1>Pessoas</h1>
       <div className={styles.listaPessoas}>
       {listPessoas !== undefined ? (
-        listPessoas.sort((a:any, b:any) => a.idPessoa > b.idPessoa ? 1 : -1).map((pessoa: PessoaDTO) =>
+        listPessoas.map((pessoa: PessoaDTO) =>
         (
           <div className={styles.pessoa} key={pessoa.idPessoa}>
             <div className={styles.pessoaHeader}>

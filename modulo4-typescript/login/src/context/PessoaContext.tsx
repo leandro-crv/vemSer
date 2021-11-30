@@ -23,10 +23,7 @@ const PessoaProvider: React.FC<ReactNode> = ({children}) =>{
 
   useEffect(()=>{
     if(edit){
-      console.log('em edição')
-      console.log('pessoa no useEffect',infoPessoa)
       navigate('/cadastro')
-      
     }
   },[edit])
 
@@ -34,11 +31,9 @@ const PessoaProvider: React.FC<ReactNode> = ({children}) =>{
 
   const getPessoas = async()=>{
     const {data} = await api.get('pessoa');
-    setListPessoas(data);
+    setListPessoas(data.sort((a:any, b:any) => a.idPessoa > b.idPessoa ? 1 : -1));
   }
   
-
-
   // CRIAR (pessoa e endereço)
 
   const postPessoa = async (pessoa: PessoaDTO) =>{
@@ -76,7 +71,6 @@ const PessoaProvider: React.FC<ReactNode> = ({children}) =>{
   
   const putPessoa = async (pessoa:PessoaDTO)=>{
     const {data} = await api.put(`/pessoa/${idEdit}`,pessoa);
-    console.log('pessoa editada',data);
     setIdEdit(0);
     setInfoPessoa(initialValues);
     setEdit(false);

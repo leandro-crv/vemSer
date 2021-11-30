@@ -87,13 +87,13 @@ const Cadastro: React.FC<{}> = () => {
         <Form>
           <div>
             <label>Nome:</label>
-            <Field name="nome" placeholder="Nome" />
-            <ErrorMessage name='nome' />
+            <Field name="nome" placeholder="Nome"  maxLength="30" />
+            <ErrorMessage name='nome' className='error'/>
           </div>
           <div>
             <label>Email:</label>
-            <Field name="email" placeholder="Email" />
-            <ErrorMessage name='email' />
+            <Field name="email" placeholder="Email" maxLength="30" />
+            <ErrorMessage name='email' className='error'/>
           </div>
           <div>
             <label>CPF:</label>
@@ -105,7 +105,7 @@ const Cadastro: React.FC<{}> = () => {
           <div>
             <label>Data de nascimento:</label>
             <Field type='date' name="dataNascimento"/>
-            <ErrorMessage name='dataNascimento' />
+            <ErrorMessage name='dataNascimento' className='error' />
           </div>
           <div className={styles.alinharBotoes}>
             {!edit ? (

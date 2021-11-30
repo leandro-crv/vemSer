@@ -1,8 +1,7 @@
 import { Formik, Field, Form, FormikHelpers } from 'formik';
-import React, { useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import styles from './Login.module.css';
-import {Link} from 'react-router-dom';
 
 interface LoginDTO {
   usuario: string;
@@ -43,7 +42,7 @@ const Login = () => {
             <Field id="senha" type='password' name="senha" placeholder="senha" />
           </div>
           <button type="submit" className='botao1'>Entrar</button>
-          <Link to='/cadastro'>Criar conta</Link>
+          {/* <Link to='/cadastro'>Criar conta</Link> */}
         </Form>
       </Formik>
     </div>
