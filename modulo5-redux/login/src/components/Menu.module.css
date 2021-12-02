@@ -1,0 +1,36 @@
+.menu ul{
+  display: flex;
+}
+
+.menu ul li{
+  margin-right: 16px;
+  list-style: none;
+}
+
+.menu li a{
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.menu li a:hover{
+  text-decoration: underline;
+  color:black;
+  background-color: white;
+}
+
+.btnLogout{
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  padding: 0 8px;
+  border-radius: 4px;
+  width:50px;
+}
+
+.btnLogout:hover{
+  color:red;
+  font-weight: bold;
+  background-color: white;
+  cursor: pointer;
+}
