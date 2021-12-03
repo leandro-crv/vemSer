@@ -1,18 +1,19 @@
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import styles from './Login.module.css';
-import * as LoginActions from '../store/actions/login';
-import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import { handleLogin } from '../store/actions/AuthActions';
+import api from '../api';
 
-import { useEffect } from 'react';
 
-const Login = ({handleLogin, auth, token})=>{
 
+const Login = ({ auth,dispatch})=>{
+  console.log('auth é: ',auth)
+  
   return(
+    
     <div className={styles.login}>
       <h1 className={styles.titulo}>Entrar</h1>
-      <p> auth: {auth} </p>
-      <p> token: {token} </p>
+    
       <Formik
         initialValues={{
           usuario: '',
@@ -23,7 +24,7 @@ const Login = ({handleLogin, auth, token})=>{
           { setSubmitting }
         ) => {
           console.log('values é: ', values)
-          handleLogin(values);
+          handleLogin(values, dispatch);
           
         }}
       >
@@ -45,12 +46,8 @@ const Login = ({handleLogin, auth, token})=>{
 
 
 const mapStateToProps = state => ({
-  auth: state.loginReducer.auth,
-  token: state.loginReducer.token
+  auth: state.authReducer.auth,
 })
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators(LoginActions,dispatch)
-)
 
-export default connect(mapStateToProps, mapDispatchToProps) (Login);
+export default connect(mapStateToProps) (Login);
