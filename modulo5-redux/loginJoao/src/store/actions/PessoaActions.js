@@ -1,0 +1,66 @@
+import { api } from "../../api";
+import { useNavigate } from "react-router";
+// GET
+export const getPessoas = async (dispatch) => {
+  const { data } = await api.get('/pessoa');
+  if (data) {
+    dispatch({
+      type: 'GET_PESSOAS',
+      pessoas: data
+    })
+  } else {
+    alert('Deu erro no login');
+  }
+}
+
+// EDIT (PUT)
+
+export const prepareEdition = (pessoa, dispatch) => {
+  console.log('pessoa é: ', pessoa)
+  dispatch({
+    type: 'SET_EDIT',
+    edit: {
+      status: true,
+      pessoa: pessoa
+    }
+  })  
+}
+
+
+export const cancelEdit = (dispatch) => {
+  dispatch({
+    type: 'SET_EDIT',
+    edit: {
+      status: false,
+      pessoa: {}
+    }
+  });
+}
+
+export const putPessoa = async (pessoa, id, dispatch) =>{
+  console.log('id é: ', id);
+  console.log('pessoa é: ', pessoa);
+  const {data} = await api.put(`/pessoa/${id}`,pessoa);
+  console.log('data no put', data)
+  window.location.href = '/pessoa';
+}
+
+
+// DELETE 
+export const deletePessoa = async (id, dispatch) => {
+  console.log("delete id é: ", id)
+  const response = await api.delete(`/pessoa/${id}`);
+  if (response) {
+    getPessoas(dispatch);
+  }else{
+    alert('Erro ao deletar')
+  }
+}
+
+// POST 
+export const postPessoa = async (pessoa, dispatch) => {
+  const { data } = await api.post('/pessoa', pessoa);
+  console.log('data no post é: ', data)
+  if(data) getPessoas(dispatch);
+  window.location.href='/pessoa';
+}
