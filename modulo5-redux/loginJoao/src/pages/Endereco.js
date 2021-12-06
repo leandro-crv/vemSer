@@ -1,68 +1,110 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useState } from 'react';
 import axios from 'axios';
+import styles from './Endereco.module.css';
+import InputMask from 'react-input-mask';
+import { removeMaskCep } from '../helpers';
+import {AiOutlineSearch} from 'react-icons/ai';
+import { useNavigate } from 'react-router';
 
 const Endereco = () => {
+  const navigate = useNavigate();
   const [cepNotFound, setCepNotFound] = useState(false);
   const initialAddress = {
     cidade: '',
     logradouro: '',
-    numero: 0,
+    numero: '',
     estado: '',
     pais: ''
   }
 
   const [address, setAddress] = useState(initialAddress);
   
-  const getCep = async (cep) => {
-    const { data } = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
-    if (data) {
-      setCepNotFound(false);
-      setAddress({
-        cidade: data.localidade,
-        logradouro: data.logradouro ? data.logradouro : '',
-        numero: data.numero ? data.numero : 0,
-        estado: data.uf,
-        pais: 'Brasil'
-      })
+  const getCep = async (cep) => {  
+      const {data} = await axios.get(`https://viacep.com.br/ws/${cep}/json/`);
+      if(data.erro){
+        setCepNotFound(true);
+      }
+      else{
+        setCepNotFound(false);
+        setAddress({
+          cidade: data.localidade,
+          logradouro: data.logradouro ? data.logradouro : '',
+          numero: data.numero ? data.numero : '',
+          estado: data.uf,
+          pais: 'Brasil'
+        })
+      }
+  }
+
+  const validateCep = (values) =>{
+    const errors = {};
+    const cepNumeros = removeMaskCep(values.cep)
+    
+    if(!cepNumeros){
+      errors.cep = 'CEP é um campo obrigatório';
+    } else if(cepNumeros.length!==8){
+      errors.cep = 'CEP deve conter 8 dígitos';
     }
-    console.log('data é:', data)
+    return errors;
+  }
+
+  const validateAddress = (values) => {
+    const errors = {};
+
+    if(!values.cidade){
+      errors.cidade = 'Cidade é um campo obrigatório';
+    }
+
+    if(!values.estado){
+      errors.estado = 'UF é um campo obrigatório';
+    }
+
+    return errors;
   }
 
   return (
-    <div>
-      <h1>Sign Up</h1>
+    <div className={styles.form}>
+      <h1 className='titulo'>Cadastrar endereço</h1>
       <Formik
         initialValues={{
           cep: '',
 
         }}
+        validate={validateCep}
         onSubmit={(values) => {
-          getCep(values.cep)
+          getCep(removeMaskCep(values.cep));
         }}
       >
         <Form>
-          <div>
+          <div className={styles.divForm}>
             <label htmlFor="cep">CEP</label>
-            <Field id="cep" name="cep" placeholder="" />
+            <Field id="cep" name="cep" render={({field})=>(
+              <InputMask {...field} mask={`99999-999`} />
+            )} />
+             <button type="submit" className={styles.submitCep}><AiOutlineSearch/></button>          
+            <ErrorMessage name='cep' render={msg => <div className='error'>{msg}</div>}/>
+            {cepNotFound ? (<p className='error'> CEP não encontrado </p>): ''}
           </div>
-          <button type="submit">Enviar CEP</button>
+         
         </Form>
       </Formik>
       <Formik
         initialValues={address}
         enableReinitialize={true}
+        validate={validateAddress}
         onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
+          console.log("values address",values)
+          alert(`Endereço cadastrado. Valores no console`)
+          navigate('/pessoa')
         }}
       >
         <Form>
           <div>
             <label htmlFor="cidade">Cidade</label>
             <Field id="cidade" name="cidade" placeholder="" />
+            <ErrorMessage name='cidade' render={msg => <div className='error'>{msg}</div>}/>
           </div>
           <div>
             <label htmlFor="logradouro">Logradouro</label>
@@ -72,17 +114,20 @@ const Endereco = () => {
             <div>
               <label htmlFor="numero">Número</label>
               <Field id="numero" name="numero" placeholder="" />
+              <ErrorMessage name='cidade' render={msg => <div className='error'>{msg}</div>}/>
             </div>
             <div>
               <label htmlFor="estado">UF</label>
               <Field id="estado" name="estado" placeholder="" />
+              <ErrorMessage name='cidade' render={msg => <div className='error'>{msg}</div>}/>
             </div>
             <div>
               <label htmlFor="pais">País</label>
               <Field id="pais" name="pais" placeholder="" />
+              <ErrorMessage name='cidade' render={msg => <div className='error'>{msg}</div>}/>
             </div>
           </div>
-          <button type="submit">Cadastrar</button>
+          <button type="submit" className='botao1'>Cadastrar</button>
         </Form>
       </Formik>
     </div>

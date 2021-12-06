@@ -18,12 +18,18 @@ body {
   
 }
 
+.titulo{
+  text-align: center;
+}
+
 .none{
   display: none;
 }
 
 .error{
   color: red;
+  font-size: .8rem;
+  padding: 2px;
 }
 
 
@@ -101,4 +107,19 @@ body {
 
 .form-usuario button{
   margin-bottom: 16px;
+}
+
+.linkFalso{
+  color: blue;
+}
+
+.linkFalso:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.home{
+  text-align: center;
+  margin-top: 100px;
+  
 }

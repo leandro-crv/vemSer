@@ -10,21 +10,49 @@ import Login from "./pages/Login";
 import Pessoa from "./pages/Pessoa";
 import Cadastro from "./pages/Cadastro";
 import Endereco from "./pages/Endereco";
+import NotFound from './components/NotFound'
+import { useEffect } from "react";
+import {isLogin} from './store/actions/AuthActions'
+import { api } from "./api";
+import {connect} from 'react-redux';
+import Loading from "./components/Loading";
 
-function Routers() {
+function Routers({auth,dispatch}) {
+  
+  useEffect(()=>{
+    const token = localStorage.getItem('token');
+    if(token){
+      api.defaults.headers.common['Authorization'] = token;
+      isLogin(dispatch,token)
+    }
+  },[]);
+  
+  // const {loading} = auth;
+  // if (loading) {
+  //   return <Loading/>;
+  // }
+
   return (
     <BrowserRouter>
       <Header />
+      <div className='container'>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/pessoa" element={<Pessoa />} />
           <Route path="/cadastro" element={<Cadastro/>} />
           <Route path="/endereco" element={<Endereco/>} />
+          <Route path="*" element={<NotFound/>} />
         </Routes>
+        </div>
       <Footer />
     </BrowserRouter>
   )
 }
 
-export default Routers
+// export default Routers
+const mapStateToProps = state => ({
+  auth: state.authReducer.auth
+});
+
+export default connect(mapStateToProps)(Routers)

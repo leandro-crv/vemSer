@@ -1,4 +1,15 @@
 import { api } from "../../api";
+
+export const isLogin = (dispatch,token) =>{
+  const logado = {
+    type: 'SET_IS_LOGIN',
+    token: token,
+    auth: true,
+    loading: false
+  }
+  dispatch(logado);
+}
+
 export const handleLogin = async(values, dispatch) => {
   const {data} = await api.post('/auth', values);
   if (data) {
@@ -15,4 +26,14 @@ export const handleLogin = async(values, dispatch) => {
   } else {
     alert('Deu erro no login');
   }
+}
+
+export const handleLogout = (dispatch)=>{
+  localStorage.removeItem('token');
+  dispatch({
+    type:'SET_LOGIN',
+    token:'',
+    auth:false,
+    loading:false
+  })
 }

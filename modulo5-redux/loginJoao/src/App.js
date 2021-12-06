@@ -6,7 +6,6 @@ import { api } from './api';
 const App = () => {
   useEffect(()=>{
     if(localStorage.getItem('token')){
-      console.log('entrei no if do token')
       api.defaults.headers.common['Authorization'] = localStorage.getItem('token');
     }
   },[])

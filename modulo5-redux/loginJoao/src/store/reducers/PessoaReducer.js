@@ -8,7 +8,6 @@ const INITIAL_STATE = {
 
 function pessoaReducer(state = INITIAL_STATE, action) {
   if (action.type === 'GET_PESSOAS') {
-    console.log('action no pessoas é: ', action)
     return {
       ...state,
       pessoas: action.pessoas 

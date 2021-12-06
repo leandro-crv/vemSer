@@ -1,14 +1,25 @@
 import { Link } from "react-router-dom";
-
-
+import { connect } from "react-redux";
 import styles from './Menu.module.css';
-const Menu = () =>{
+import { handleLogout } from "../store/actions/AuthActions";
+import { useNavigate } from "react-router";
+
+const Menu = ({auth, dispatch}) =>{
+  const navigate = useNavigate();
+  
+  const handelLogoutBackPage = ()=>{
+    handleLogout(dispatch);
+    navigate('/login');
+  }
   return(
     <nav className={styles.menu}>
       <ul>
-        <li>
+        {!auth ? (
+          <li>
           <Link to='/login'>Entrar</Link>
         </li>
+        ): (
+        <>
         <li>
           <Link to='/pessoa'>Pessoa</Link>
         </li>
@@ -18,8 +29,18 @@ const Menu = () =>{
         <li>
           <Link to='/endereco'>Endereço</Link>
         </li>
+        <button onClick={()=> handelLogoutBackPage()} className={styles.btnLogout}>Sair</button>
+        </>
+        )}
       </ul>
     </nav>
   );
 }
-export default Menu;
+
+// export default Menu;
+
+const mapStateToProps = state => ({
+  auth: state.authReducer.auth.isLogin
+});
+
+export default connect(mapStateToProps)(Menu)

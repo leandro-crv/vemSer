@@ -3,8 +3,16 @@
   
 }
 
-.cadastro .titulo{
+.cadastro .titulos{
   text-align: center;
+}
+
+.cadastro .titulos small{
+  margin-top:0 auto 2px auto 0;
+}
+
+.cadastro .titulos h1{
+  margin-bottom: 2px;
 }
 
 .cadastro form{
@@ -44,4 +52,10 @@
   padding:16px;
   border:lightgray solid thin;
   width: 400px;
+}
+
+
+.error{
+  color: red;
+  font-size: .8rem;;
 }

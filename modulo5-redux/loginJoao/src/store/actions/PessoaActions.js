@@ -1,12 +1,13 @@
 import { api } from "../../api";
 import { useNavigate } from "react-router";
+import moment from "moment";
 // GET
 export const getPessoas = async (dispatch) => {
   const { data } = await api.get('/pessoa');
   if (data) {
     dispatch({
       type: 'GET_PESSOAS',
-      pessoas: data
+      pessoas: data.sort((pessoa1,pessoa2) => pessoa1.idPessoa > pessoa2.idPessoa ? 1 : -1)
     })
   } else {
     alert('Deu erro no login');
@@ -16,7 +17,7 @@ export const getPessoas = async (dispatch) => {
 // EDIT (PUT)
 
 export const prepareEdition = (pessoa, dispatch) => {
-  console.log('pessoa é: ', pessoa)
+  pessoa.dataNascimento = moment(pessoa.dataNascimento,'YYYY-MM-DD').format('DDMMYYYY');
   dispatch({
     type: 'SET_EDIT',
     edit: {

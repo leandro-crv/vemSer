@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
   auth: {
     token: '',
-    auth: false,
+    isLogin: false,
     loading: true
   }
 }
@@ -11,7 +11,16 @@ function authReducer(state = INITIAL_STATE, action) {
     return {
       auth: {
         token: action.token,
-        auth: action.auth,
+        isLogin: action.auth,
+        loading: action.loading
+      }
+    }
+  }
+  if (action.type === 'SET_IS_LOGIN') {
+    return {
+      auth: {
+        token: action.token,
+        isLogin: action.auth,
         loading: action.loading
       }
     }

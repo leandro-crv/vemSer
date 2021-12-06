@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useFormik } from 'formik';
 import {connect} from 'react-redux';
-import {handleLogin} from '../store/actions/AuthActions'
+import {handleLogin} from '../store/actions/AuthActions';
+import styles from './Login.module.css';
 
-function Login({ auth, dispatch }) {
-
+function Login({ auth,dispatch }) {
+ 
   const formik = useFormik({
     initialValues: {
       usuario: '',
@@ -12,11 +13,11 @@ function Login({ auth, dispatch }) {
     },
     onSubmit: values => {
       handleLogin(values, dispatch)
-    },
+    }
   });
 
   return (
-    <div>
+    <div className={styles.login}>
       <h1>Login</h1>
       <form onSubmit={formik.handleSubmit}>
       <div>
@@ -40,7 +41,7 @@ function Login({ auth, dispatch }) {
        />
       </div>
       <div>
-       <button type="submit">Submit</button>
+       <button type="submit" className='botao1'>Entrar</button>
       </div>
      </form>  
     </div>

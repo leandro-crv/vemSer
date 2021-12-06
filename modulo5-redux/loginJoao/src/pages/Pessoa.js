@@ -3,32 +3,27 @@ import { AiFillEdit } from 'react-icons/ai';
 import { AiFillDelete } from 'react-icons/ai';
 import styles from './Pessoa.module.css';
 import Moment from 'react-moment';
-
 import {connect} from 'react-redux';
+
+
 import {getPessoas} from '../store/actions/PessoaActions';
 import { prepareEdition } from "../store/actions/PessoaActions";
 import { deletePessoa } from "../store/actions/PessoaActions";
 import { api } from "../api";
 import { useNavigate } from "react-router";
+import { addMaskCpf } from "../helpers";
 
-const Pessoa = ({pessoas, edit, dispatch}) => {
+const Pessoa = ({pessoas, dispatch}) => {
+ 
   const navigate = useNavigate();
-  
+
   useEffect(()=>{
-    if(localStorage.getItem('token')){
-      getPessoas(dispatch);
-    }
+    // getPessoas(dispatch);
+    setTimeout(()=>{
+      getPessoas(dispatch)
+    },500)
   },[]);
 
-  
-
-  console.log("pessoas no page é: ", pessoas)
-  console.log('edit na página pessoas', edit)
-  
-  // TODO utilizar substring
-  const addMaskCpf = (cpf) =>{
-    return `${cpf[0]}${cpf[1]}${cpf[2]}.${cpf[3]}${cpf[4]}${cpf[5]}.${cpf[6]}${cpf[7]}${cpf[8]}-${cpf[9]}${cpf[10]}`
-  }
 
   const prepareEditionGoPage = (pessoa)=>{
     prepareEdition(pessoa, dispatch);
@@ -37,7 +32,7 @@ const Pessoa = ({pessoas, edit, dispatch}) => {
 
   return (
     <>
-      <h1>Pessoas</h1>
+      <h1 className='titulo'>Pessoas</h1>
       <div className={styles.listaPessoas}>
       {pessoas !== undefined ? (
         pessoas.map((pessoa) =>
@@ -64,6 +59,7 @@ const Pessoa = ({pessoas, edit, dispatch}) => {
 }
 
 const mapStateToProps = state => ({
+  auth: state.authReducer.auth,
   pessoas: state.pessoaReducer.pessoas,
   edit: state.pessoaReducer.edit
 })
