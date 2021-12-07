@@ -14,6 +14,18 @@ export const getPessoas = async (dispatch) => {
   }
 }
 
+export const sortPessoas = ( pessoas, criterio) =>{
+  
+  if(criterio==='id'){
+    return pessoas.sort((pessoa1,pessoa2) => pessoa1.idPessoa > pessoa2.idPessoa ? 1 : -1)
+  } else if(criterio==='data'){
+    return pessoas.sort((pessoa1,pessoa2) => moment(pessoa1.dataNascimento).isAfter(pessoa2.dataNascimento) ? 1 : -1)
+  }
+  else if(criterio==='nome'){
+    return pessoas.sort((pessoa1,pessoa2) => pessoa1.nome > pessoa2.nome ? 1 : -1)
+  }
+}
+
 // EDIT (PUT)
 
 export const prepareEdition = (pessoa, dispatch) => {

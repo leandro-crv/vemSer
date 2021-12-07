@@ -3,7 +3,8 @@ const INITIAL_STATE = {
   edit: {
     status: false,
     pessoa:{}
-  }
+  },
+  order:'id'
 }
 
 function pessoaReducer(state = INITIAL_STATE, action) {
@@ -23,7 +24,6 @@ function pessoaReducer(state = INITIAL_STATE, action) {
       }
     }
   }
-
 
   return state
 }

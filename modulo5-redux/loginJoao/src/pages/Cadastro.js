@@ -101,7 +101,7 @@ const Cadastro = ({ edit, pessoas, dispatch }) => {
         <Form>
           <div>
             <label htmlFor="nome">Nome</label>
-            <Field id="nome" name="nome" placeholder="Digite seu nome" />
+            <Field id="nome" name="nome" placeholder="Digite seu nome" maxlength="30"/>
             <ErrorMessage name='nome' render={msg => <div className='error'>{msg}</div>} />
           </div>
           <div>
@@ -112,8 +112,9 @@ const Cadastro = ({ edit, pessoas, dispatch }) => {
               name="email"
               placeholder="Digite seu email"
               type="email"
+              maxlength="30"
             />
-            <ErrorMessage name='email' render={msg => <div className='error'>{msg}</div>} />
+            <ErrorMessage name='email' render={msg => <div className='error' >{msg}</div>} />
           </div>
           <div>
             <label htmlFor="cpf">CPF</label>

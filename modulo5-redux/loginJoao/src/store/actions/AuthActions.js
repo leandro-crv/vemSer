@@ -5,7 +5,6 @@ export const isLogin = (dispatch,token) =>{
     type: 'SET_IS_LOGIN',
     token: token,
     auth: true,
-    loading: false
   }
   dispatch(logado);
 }
@@ -18,7 +17,6 @@ export const handleLogin = async(values, dispatch) => {
       type: 'SET_LOGIN',
       token: data,
       auth: true,
-      loading: false
     }
     api.defaults.headers.common['Authorization'] = data;
     window.location.href='/pessoa';
@@ -34,6 +32,5 @@ export const handleLogout = (dispatch)=>{
     type:'SET_LOGIN',
     token:'',
     auth:false,
-    loading:false
   })
 }

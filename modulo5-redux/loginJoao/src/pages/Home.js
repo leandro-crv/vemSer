@@ -12,7 +12,7 @@ function Home({isLogin}) {
     <div className='home'>
       <img src={cogumelo} alt='cogumelo' />
       {!isLogin ? (
-        <span>Para acessar o conteúdo da página faça <span className='linkFalso' onClick={()=> goToLogin()}>login</span></span>
+        <div>Para acessar o conteúdo da página faça <span className='linkFalso' onClick={()=> goToLogin()}>login</span></div>
       ):null}
     </div>
   )

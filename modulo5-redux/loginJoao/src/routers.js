@@ -11,26 +11,26 @@ import Pessoa from "./pages/Pessoa";
 import Cadastro from "./pages/Cadastro";
 import Endereco from "./pages/Endereco";
 import NotFound from './components/NotFound'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {isLogin} from './store/actions/AuthActions'
 import { api } from "./api";
 import {connect} from 'react-redux';
 import Loading from "./components/Loading";
 
 function Routers({auth,dispatch}) {
-  
+  const [loading, setLoading] = useState(true);
   useEffect(()=>{
     const token = localStorage.getItem('token');
     if(token){
       api.defaults.headers.common['Authorization'] = token;
-      isLogin(dispatch,token)
+      isLogin(dispatch,token);
     }
+    setLoading(false);
   },[]);
   
-  // const {loading} = auth;
-  // if (loading) {
-  //   return <Loading/>;
-  // }
+  if (loading) {
+    return <Loading/>;
+  }
 
   return (
     <BrowserRouter>
@@ -38,10 +38,15 @@ function Routers({auth,dispatch}) {
       <div className='container'>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/pessoa" element={<Pessoa />} />
-          <Route path="/cadastro" element={<Cadastro/>} />
-          <Route path="/endereco" element={<Endereco/>} />
+          {auth.isLogin ? (
+            <>
+            <Route path="/pessoa" element={<Pessoa />} />
+            <Route path="/cadastro" element={<Cadastro/>} />
+            <Route path="/endereco" element={<Endereco/>} />
+            </>
+          ): (
+            <Route path="/login" element={<Login />} />
+          )}         
           <Route path="*" element={<NotFound/>} />
         </Routes>
         </div>
@@ -50,9 +55,10 @@ function Routers({auth,dispatch}) {
   )
 }
 
-// export default Routers
+
 const mapStateToProps = state => ({
   auth: state.authReducer.auth
 });
 
 export default connect(mapStateToProps)(Routers)
+
